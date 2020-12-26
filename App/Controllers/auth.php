@@ -21,8 +21,16 @@ class Auth extends Controller{
     public function login(){
         // get the form data
         // log the user in or return the form page with errors  
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            return $this->view("auth/login");
+        }else{
+            // TODO execute signup;
+            // get the data
+            // validate them
+            // create new user
+            echo "you are logged in";
+        }
         
-        echo "you are logged in";
         
         
     }
