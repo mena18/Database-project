@@ -2,5 +2,8 @@
 
 <?php require_once(app_path('views/error.php')); ?>
 
+
+
+</div>
 </body>
 </html>

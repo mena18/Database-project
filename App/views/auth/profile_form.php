@@ -1,27 +1,24 @@
-<?php require_once(app_path('views/header.php')); ?>
+<?php require_once(app_path('views/header.php')); $user = $data['user']?>
   
 
-<form action="<?= url('auth/sign_up/') ?>" method="POST" enctype="multipart/form-data">
+<form action="<?= url('auth/my_profile/') ?>" method="POST" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label for="email">Email*:</label>
+        <input value="<?= $user->email ?>" disabled type="email" class="form-control" id="email" placeholder="email" name="email" required>
+    </div>
     
     <div class="form-group">
         <label for="first_name">First name*:</label>
-        <input type="text" class="form-control" id="first_name" placeholder="Enter First name" name="first_name" required>
+        <input value="<?= $user->first_name ?>" type="text" class="form-control" id="first_name" placeholder="Enter First name" name="first_name" required>
     </div>
 
     <div class="form-group">
         <label for="last_name">Last name*:</label>
-        <input type="text" class="form-control" id="last_name" placeholder="Enter Last name" name="last_name" required>
+        <input value="<?= $user->last_name ?>" type="text" class="form-control" id="last_name" placeholder="Enter Last name" name="last_name" required>
     </div>
 
-    <div class="form-group">
-        <label for="password">Password*:</label>
-        <input type="password" class="form-control" id="password" placeholder="password" name="password" required>
-    </div>
 
-    <div class="form-group">
-        <label for="email">Email*:</label>
-        <input type="email" class="form-control" id="email" placeholder="email" name="email" required>
-    </div>
 
     <div class="form-group">
         <label >Gender*:</label><br>
@@ -39,19 +36,14 @@
     
     <div  class="form-group">
         <label for="birth_date">Birth Date*:</label>
-        <input type="date" class="form-control" id="birth_date" placeholder="Enter Birth Date" name="birth_date" required>
+        <input value="<?= $user->birth_date ?>" type="date" class="form-control" id="birth_date" placeholder="Enter Birth Date" name="birth_date" required>
     </div>
 
 
 
     <div class="form-group">
         <label for="nick_name">NickName:</label>
-        <input type="text" class="form-control" id="nick_name" placeholder="nick_name" name="nick_name">
-    </div>
-
-    <div class="form-group">
-        <label for="phone">phone number:</label>
-        <input type="text" class="form-control" id="phone" placeholder="phone" name="phone">
+        <input value="<?= $user->nick_name ?>" type="text" class="form-control" id="nick_name" placeholder="nick_name" name="nick_name">
     </div>
 
     <div class="form-group">
@@ -61,7 +53,7 @@
 
     <div class="form-group">
         <label for="home_town">Home Town:</label>
-        <input type="text" class="form-control" id="home_town" placeholder="home_town" name="home_town">
+        <input value="<?= $user->home_town ?>" type="text" class="form-control" id="home_town" placeholder="home_town" name="home_town">
     </div>
 
 
@@ -81,7 +73,7 @@
 
     <div class="form-group">
         <label for="about_me">About me:</label>
-        <input type="text" class="form-control" id="about_me" placeholder="about_me" name="about_me">
+        <input value="<?= $user->about_me ?>" type="text" class="form-control" id="about_me" placeholder="about_me" name="about_me">
     </div>
 
     

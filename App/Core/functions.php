@@ -12,6 +12,25 @@ function islogedin(){
 	return isset($_SESSION['user']);
 }
 
+function validate($_data,$arr){
+	$output = [];
+	foreach ($arr as $key => $value) {
+
+		if(isset($_data[$key])){
+			$output[$key] = $_data[$key]; 
+		}else if($value=="required"){ // it dosen't exists and it's required
+			return "value ".$key ." is required";
+		}else{
+			$output[$key] = null; 
+		}
+		
+			
+		
+
+	}
+	return $output;
+}
+
 function upload_file($name){
 	if(!$_FILES[$name]['name']){return "";}
 	$img=$_FILES[$name];
