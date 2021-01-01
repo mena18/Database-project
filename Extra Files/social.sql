@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 26, 2020 at 01:12 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Jan 01, 2021 at 07:09 PM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -80,12 +79,37 @@ CREATE TABLE `phone` (
 CREATE TABLE `post` (
   `post_id` int(11) NOT NULL,
   `writer` varchar(255) NOT NULL,
-  `caption` varchar(255) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
+  `caption` varchar(255) DEFAULT NULL,
   `date` date NOT NULL,
-  `is_public` tinyint(1) NOT NULL DEFAULT '1',
-  `image` varchar(255) NOT NULL
+  `is_public` tinyint(1) NOT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`post_id`, `writer`, `caption`, `date`, `is_public`, `image`) VALUES
+(2, 'ahmad@gmail.com', NULL, '2021-01-05', 1, ''),
+(3, 'ahmad@gmail.com', NULL, '2021-01-06', 1, NULL),
+(4, 'ahmad@gmail.com', NULL, '2021-01-13', 1, NULL),
+(5, 'ahmad@gmail.com', NULL, '2021-01-01', 0, NULL),
+(6, 'ahmad@gmail.com', NULL, '2021-01-01', 0, NULL),
+(7, 'ahmad@gmail.com', NULL, '2021-01-01', 0, NULL),
+(8, 'ahmad@gmail.com', 's', '2021-01-01', 0, NULL),
+(9, 'ahmad@gmail.com', 'dsdf', '2021-01-01', 1, NULL),
+(10, 'ahmad@gmail.com', 'dsdf', '2021-01-01', 1, NULL),
+(11, 'ahmad@gmail.com', 'dsdf', '2021-01-01', 1, NULL),
+(12, 'ahmad@gmail.com', 'fff', '2021-01-01', 0, 'vv'),
+(15, 'ahmad@gmail.com', 'dsgfdggffgdfgdfg', '2021-01-01', 1, NULL),
+(16, 'ahmad@gmail.com', 'dsgfdggffgdfgdfg', '2021-01-01', 1, NULL),
+(17, 'ahmad@gmail.com', 'sdfljhkjsdfkjhsdf', '2021-01-01', 1, NULL),
+(18, 'ahmad@gmail.com', NULL, '2021-01-01', 0, '/opt/lampp/temp/phpFNLwzW'),
+(19, 'ahmad@gmail.com', 'dd', '2021-01-01', 0, NULL),
+(20, 'ahmad@gmail.com', 'dd', '2021-01-01', 0, NULL),
+(21, 'ahmad@gmail.com', 'dd', '2021-01-01', 0, NULL),
+(22, 'ahmad@gmail.com', NULL, '2021-01-01', 0, NULL),
+(23, 'ahmad@gmail.com', NULL, '2021-01-01', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -165,6 +189,13 @@ CREATE TABLE `User` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `User`
+--
+
+INSERT INTO `User` (`email`, `first_name`, `last_name`, `nick_name`, `password`, `gender`, `birth_date`, `picture`, `home_town`, `status`, `about_me`) VALUES
+('ahmad@gmail.com', 'ahmed', 'mehanna', 'mehanna.cw', '1234', 'male', '2020-12-16', 'null', 'dddd', 'single', 'bla bla bla bla');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -202,6 +233,7 @@ ALTER TABLE `phone`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`post_id`),
+  ADD UNIQUE KEY `image` (`image`),
   ADD KEY `FK_12` (`writer`);
 
 --
@@ -251,7 +283,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
