@@ -90,31 +90,25 @@ class Friend extends Controller{
 
     public function all(){
         
-        // display all friendships
+        // get all friends as users
 
-        return $this->view("friends/all");
+        $user = $_SESSION['email'];
+
+        $users = friend_model::friends($user);
+
+        return $this->view("friends/all",['users'=>$users]);
         
         
     }
-
-    public function one(){
-        // get the form data
-        // log the user in or return the form page with errors  
-        
-        
-        return $this->view("friends/one");
-        
-        
-        
-    }
-
-    
-
 
     public function requests(){
-        // view all friend requests
-        // the one you sent and the one other people sent
-        return $this->view("friends/requests");
+        // view all upcoming friend requests
+
+        $user = $_SESSION['email'];
+
+        $users = friend_model::all_requests($user);
+
+        return $this->view("friends/requests",['users'=>$users]);
     }
 
 }

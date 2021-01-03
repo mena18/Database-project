@@ -1,7 +1,20 @@
-<?php
-
-require_once(app_path('views/header.php'));
+<?php require_once(app_path('views/header.php')); ?>
   
-echo "view all friends";
+<h1>Friends List (<?=count($data['users'])?>)</h1>
 
-require_once(app_path('views/footer.php'));
+
+
+
+<?php 
+
+foreach ($data['users'] as $user ) {
+    echo "Email : ".$user->email . "<br/>" ;
+    echo "FriendShip Date : ".$user->date . "<br/>" ;
+    echo  "<br/>" ;
+}
+
+?>
+
+
+
+<?php require_once(app_path('views/footer.php')); ?>

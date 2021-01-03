@@ -1,7 +1,24 @@
-<?php
-
-require_once(app_path('views/header.php'));
+<?php require_once(app_path('views/header.php')); ?>
   
-echo "view your requests";
+<h1>Friends Requests (<?=count($data['users'])?>)</h1>
 
-require_once(app_path('views/footer.php'));
+
+
+
+<?php 
+
+
+if(!$data['users']){
+    echo "<h2 style='color:red'>No friend requests poor man!!</h2>";
+}
+
+foreach ($data['users'] as $user ) {
+    echo "Email : ".$user->email . "<br/>" ;
+    echo "request Date : ".$user->date . "<br/>" ;
+    echo  "<br/>" ;
+}
+
+?>
+
+
+<?php require_once(app_path('views/footer.php')); ?>

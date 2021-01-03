@@ -15,6 +15,8 @@ class DataBase{
 		return $stmt->fetchAll(PDO::FETCH_CLASS, $class_name);
 	}
 
+	
+
 	public static function query_fetch($sql,$class_name = 'none'){
 		if($class_name == 'none'){$class_name = static::$class_name;}
 
