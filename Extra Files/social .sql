@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 01, 2021 at 07:09 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Generation Time: Jan 03, 2021 at 07:18 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -56,8 +57,17 @@ CREATE TABLE `comment` (
 CREATE TABLE `friend` (
   `user_1` varchar(255) NOT NULL,
   `user_2` varchar(255) NOT NULL,
-  `date` date NOT NULL
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `friend`
+--
+
+INSERT INTO `friend` (`user_1`, `user_2`, `date`) VALUES
+('ahmad@gmail.com', 'ahmad@gmail.com', '2021-01-03 17:33:36'),
+('ahmad@gmail.com', 'menan381@gmail.com', '2021-01-03 17:33:41'),
+('menan381@gmail.com', 'menan381@gmail.com', '2021-01-03 17:26:27');
 
 -- --------------------------------------------------------
 
@@ -69,6 +79,13 @@ CREATE TABLE `phone` (
   `phone_num` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `phone`
+--
+
+INSERT INTO `phone` (`phone_num`, `email`) VALUES
+('', 'menan381@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -109,7 +126,12 @@ INSERT INTO `post` (`post_id`, `writer`, `caption`, `date`, `is_public`, `image`
 (20, 'ahmad@gmail.com', 'dd', '2021-01-01', 0, NULL),
 (21, 'ahmad@gmail.com', 'dd', '2021-01-01', 0, NULL),
 (22, 'ahmad@gmail.com', NULL, '2021-01-01', 0, NULL),
-(23, 'ahmad@gmail.com', NULL, '2021-01-01', 0, NULL);
+(23, 'ahmad@gmail.com', NULL, '2021-01-01', 0, NULL),
+(24, 'ahmad@gmail.com', 'simple post caption', '2021-01-03', 1, NULL),
+(26, 'menan381@gmail.com', 'new caption', '2021-01-03', 1, 'uploads/5ff1b92ad933b3.25135529.png'),
+(27, 'menan381@gmail.com', 'new caption', '2021-01-03', 1, 'uploads/5ff1b96c11c834.17123965.jpg'),
+(28, 'menan381@gmail.com', 'new caption', '2021-01-03', 1, 'uploads/5ff1b9e9aea5c4.85073530.jpg'),
+(29, 'menan381@gmail.com', 'last one please', '2021-01-03', 1, 'uploads/5ff1b9fe8b3502.59180699.png');
 
 -- --------------------------------------------------------
 
@@ -133,8 +155,16 @@ CREATE TABLE `react` (
 CREATE TABLE `request` (
   `sender` varchar(255) NOT NULL,
   `receiver` varchar(255) NOT NULL,
-  `date` date NOT NULL
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `response` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`sender`, `receiver`, `date`, `response`) VALUES
+('menan381@gmail.com', 'menan381@gmail.com', '2021-01-03 13:24:01', NULL);
 
 -- --------------------------------------------------------
 
@@ -193,7 +223,8 @@ CREATE TABLE `User` (
 --
 
 INSERT INTO `User` (`email`, `first_name`, `last_name`, `nick_name`, `password`, `gender`, `birth_date`, `picture`, `home_town`, `status`, `about_me`) VALUES
-('ahmad@gmail.com', 'ahmed', 'mehanna', 'mehanna.cw', '1234', 'male', '2020-12-16', 'null', 'dddd', 'single', 'bla bla bla bla');
+('ahmad@gmail.com', 'ahmed', 'mehanna', 'mehanna.cw', '1234', 'male', '2020-12-16', 'null', 'dddd', 'single', 'bla bla bla bla'),
+('menan381@gmail.com', 'mina', 'naeem', '', '$2y$10$y/ZFoJq8TjwS//OdMgV0j.ArI6g2judxkvrv1KUqUXMt5BGJ0pSiO', 'male', '1999-03-05', 'default_image', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -247,7 +278,7 @@ ALTER TABLE `react`
 -- Indexes for table `request`
 --
 ALTER TABLE `request`
-  ADD PRIMARY KEY (`sender`,`receiver`),
+  ADD PRIMARY KEY (`sender`,`receiver`,`date`) USING BTREE,
   ADD KEY `FK_6` (`receiver`);
 
 --
@@ -283,7 +314,7 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
