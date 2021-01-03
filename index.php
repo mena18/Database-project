@@ -52,6 +52,8 @@ require_once(app_path('models/test_model.php'));
 require_once(app_path('models/user_model.php'));
 require_once(app_path('models/phone_model.php'));
 require_once(app_path('models/post_model.php'));
+require_once(app_path('models/friend_model.php'));
+
 // require_once(app_path('models/category_model.php'));
 // require_once(app_path('models/course_model.php'));
 // require_once(app_path('models/lesson_model.php'));
