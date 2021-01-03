@@ -3,7 +3,8 @@
 class post_model extends DataBase {
     public static $table_name = "post";
     public static $class_name = "post_model";
-    public static $fill = ['post_id', 'writer','caption','date','is_public','image'];
+    public static $primary_key = "post_id";
+    public static $fill = ['writer','caption','date','is_public','image'];
 
     public static function create($data = []) {
         $query = "INSERT INTO `" . self::$table_name .'` VALUES(';

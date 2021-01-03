@@ -12,6 +12,13 @@ function islogedin(){
 	return isset($_SESSION['user']);
 }
 
+
+function require_login(){
+	if(!isset($_SESSION['email']) ){
+		redirect("auth/login");
+	}
+}
+
 function validate($_data,$arr){
 	$output = [];
 	foreach ($arr as $key => $value) {
