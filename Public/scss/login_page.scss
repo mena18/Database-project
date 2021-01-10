@@ -1,0 +1,147 @@
+.login-page-style {
+    background-color: #F0F2F5;
+    font-family: Arial, serif;
+    .container {
+        padding-top: 9.5%;
+        padding-bottom: 20%;
+        margin-left: 18.5%;
+        .row {
+            :first-child {
+                img {
+                    max-width: 55%;
+                    margin-left: -5%;
+                }
+                p {
+                    font-size: 24px;
+                    max-width: 80%;
+                    font-weight: 400;
+                }
+            }
+            :last-child {
+                .form-container {
+                    background-color: #FFF;
+                    padding: 15px 15px 24px;
+                    margin-top: -10%;
+                    border-radius: 10px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+                    max-width: 90%;
+                    form {
+                        .form-group {
+                            input {
+                                height: 50px;
+                                border-radius: 8px;
+                            }
+                            ::placeholder {
+                                color: #909FB4;
+                                padding-left: 2.5%;
+                            }
+                        }
+                        button {
+                            width: 100%;
+                            height: 50px;
+                            border-radius: 8px;
+                            font-weight: bold;
+                            font-size: 20px;
+                        }
+                    }
+                    .forgotten-password-link {
+                        text-align: center;
+                        padding: 15px 0;
+                        font-size: 14px;
+                    }
+                    .new-account-btn {
+                        text-align: center;
+                        .btn.btn-success {
+                            padding: 15px 20px;
+                            font-weight: bold;
+                            font-size: 16px;
+                            background-color: #42b72a;
+                            &:hover {
+                                background-color: #28a745;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .signup-popup {
+            display: none;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            position: absolute;
+            top: 0;
+            left: 0;
+            .signup-popup-container {
+                background-color: #fff;
+                margin-left: 35%;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+                left: 3%;
+                position: absolute;
+                top: 25%; // 10
+                width: 432px;
+                border-radius: 7.5px;
+                padding-bottom: 25px;
+                .title {
+                    padding-left: 17.5px;
+                    font-weight: bold;
+                    font-size: 32px;
+                }
+                i.btn {
+                    font-size: 18px;
+                    float: right;
+                    color: #606771;
+                }
+                form {
+                    padding-left: 17.5px;
+                    padding-right: 17.5px;
+                    div.form-group, div.form-row {
+                        margin-bottom: 17.5px;
+                    }
+                    .form-row {
+                        .form-check-inline {
+                            margin-right: 25px;
+                            border: 1px solid #ced4da;
+                            border-radius: .25rem;
+                            height: 38px;
+                            label {
+                                width: 100%;
+                                padding-left: 10px;
+                                font-size: 14px;
+                                .form-check-input {
+                                    float: right;
+                                    display: flex;
+                                    margin-top: 5px;
+                                }
+                            }
+                        }
+                    }
+                    select {
+                        font-size: 14px;
+                        font-weight: bolder;
+                        option {
+                            font-size: 14px;
+                        }
+                    }
+                    span.label {
+                        font-size: 12px;
+                        color: #606D7C;
+                    }
+                    input {
+                        background-color: #F5F6F7;
+                    }
+                    ::placeholder {
+                        color: #909FB4;
+                        font-size: 14px;
+                    }
+                    button {
+                        width: 50%;
+                        margin-left: 23%;
+                        font-size: 18px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+}

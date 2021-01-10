@@ -4,6 +4,7 @@ class Post extends Controller{
 
 
     public function create(){
+        return;
         # required logged in users
         require_login();
 
@@ -13,7 +14,7 @@ class Post extends Controller{
         $user = $_SESSION['email'];
         $cap = (strlen($_POST['caption'])) ? $_POST['caption'] : null;
         $img = upload_file("image");
-        $privacy = (isset($_POST['privacy'])) ? 1 : 0;
+        $privacy = ($_POST['privacy']==='public') ? 1 : 0;
         if ($cap === null && $img === null)
             return $this->view('post/form');    // Need to return with an error massage told the user the post must be contains caption or image or both
 

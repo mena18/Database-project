@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+.login-page-style {
+  background-color: #F0F2F5;
+  font-family: Arial, serif; }
+.login-page-style .container {
+  padding-top: 9.5%;
+  padding-bottom: 20%;
+  margin-left: 18.5%; }
+.login-page-style .container .row :first-child img {
+  max-width: 55%;
+  margin-left: -5%; }
+.login-page-style .container .row :first-child p {
+  font-size: 24px;
+  max-width: 80%;
+  font-weight: 400; }
+.login-page-style .container .row :last-child .form-container {
+  background-color: #FFF;
+  padding: 15px 15px 24px;
+  margin-top: -10%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 90%; }
+.login-page-style .container .row :last-child .form-container form .form-group input {
+  height: 50px;
+  border-radius: 8px; }
+.login-page-style .container .row :last-child .form-container form .form-group ::placeholder {
+  color: #909FB4;
+  padding-left: 2.5%; }
+.login-page-style .container .row :last-child .form-container form button {
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 20px; }
+.login-page-style .container .row :last-child .form-container .forgotten-password-link {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px; }
+.login-page-style .container .row :last-child .form-container .new-account-btn {
+  text-align: center; }
+.login-page-style .container .row :last-child .form-container .new-account-btn .btn.btn-success {
+  padding: 15px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #42b72a; }
+.login-page-style .container .row :last-child .form-container .new-account-btn .btn.btn-success:hover {
+  background-color: #28a745; }
+.login-page-style .container .signup-popup {
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0; }
+.login-page-style .container .signup-popup .signup-popup-container {
+  background-color: #fff;
+  margin-left: 35%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  left: 3%;
+  position: absolute;
+  top: 25%;
+  width: 432px;
+  border-radius: 7.5px;
+  padding-bottom: 25px; }
+.login-page-style .container .signup-popup .signup-popup-container .title {
+  padding-left: 17.5px;
+  font-weight: bold;
+  font-size: 32px; }
+.login-page-style .container .signup-popup .signup-popup-container i.btn {
+  font-size: 18px;
+  float: right;
+  color: #606771; }
+.login-page-style .container .signup-popup .signup-popup-container form {
+  padding-left: 17.5px;
+  padding-right: 17.5px; }
+.login-page-style .container .signup-popup .signup-popup-container form div.form-group, .login-page-style .container .signup-popup .signup-popup-container form div.form-row {
+  margin-bottom: 17.5px; }
+.login-page-style .container .signup-popup .signup-popup-container form .form-row .form-check-inline {
+  margin-right: 25px;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  height: 38px; }
+.login-page-style .container .signup-popup .signup-popup-container form .form-row .form-check-inline label {
+  width: 100%;
+  padding-left: 10px;
+  font-size: 14px; }
+.login-page-style .container .signup-popup .signup-popup-container form .form-row .form-check-inline label .form-check-input {
+  float: right;
+  display: flex;
+  margin-top: 5px; }
+.login-page-style .container .signup-popup .signup-popup-container form select {
+  font-size: 14px;
+  font-weight: bolder; }
+.login-page-style .container .signup-popup .signup-popup-container form select option {
+  font-size: 14px; }
+.login-page-style .container .signup-popup .signup-popup-container form span.label {
+  font-size: 12px;
+  color: #606D7C; }
+.login-page-style .container .signup-popup .signup-popup-container form input {
+  background-color: #F5F6F7; }
+.login-page-style .container .signup-popup .signup-popup-container form ::placeholder {
+  color: #909FB4;
+  font-size: 14px; }
+.login-page-style .container .signup-popup .signup-popup-container form button {
+  width: 50%;
+  margin-left: 23%;
+  font-size: 18px;
+  font-weight: 600; }
+
+.profile-page-style {
+  color: #94999A;
+  background-color: #18191A;
+  height: 981px; }
+.profile-page-style .container {
+  width: 50%; }
+.profile-page-style hr {
+  background-color: #3E4041; }
+.profile-page-style .header.container-fluid {
+  background-color: #242526; }
+.profile-page-style .header.container-fluid .container {
+  text-align: center; }
+.profile-page-style .header.container-fluid .container .profile-image {
+  max-width: 43%;
+  margin-left: 28.5%;
+  padding-top: 10%; }
+.profile-page-style .header.container-fluid .container .profile-image img {
+  max-width: inherit;
+  border-radius: 50%; }
+.profile-page-style .header.container-fluid .container .profile-data {
+  margin-top: 2.5%; }
+.profile-page-style .header.container-fluid .container .profile-data .name {
+  font-weight: bolder;
+  font-size: 30px;
+  color: #D3DADA; }
+.profile-page-style .header.container-fluid .container .profile-data .name .nickname {
+  font-weight: 100; }
+.profile-page-style .header.container-fluid .container .profile-data .about {
+  font-size: 16px; }
+.profile-page-style .header.container-fluid .container nav {
+  padding: 0; }
+.profile-page-style .header.container-fluid .container nav ul li div {
+  color: inherit;
+  font-weight: bolder;
+  padding: 10px 15px;
+  border-radius: 10px 10px 0 0;
+  transition: background-color ease-in-out 0.4s; }
+.profile-page-style .header.container-fluid .container nav ul li div:hover {
+  background-color: #3B3C3C; }
+.profile-page-style .header.container-fluid .container nav ul li.active {
+  color: #3181EE;
+  border-bottom: #3181EE solid 3px; }
+.profile-page-style .body.container-fluid {
+  padding-top: 15px; }
+.profile-page-style .body.container-fluid .container {
+  text-align: center; }
+.profile-page-style .body.container-fluid .container .new-post {
+  background-color: #242526;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 5px;
+  padding: 15px;
+  height: 100px; }
+.profile-page-style .body.container-fluid .container .new-post img {
+  max-width: 100%;
+  border-radius: 50%;
+  max-height: 45px; }
+.profile-page-style .body.container-fluid .container .new-post div:last-child {
+  text-align: left;
+  background-color: #414144;
+  border-radius: 20px;
+  max-height: 45px;
+  transition: all ease-in-out 0.2s; }
+.profile-page-style .body.container-fluid .container .new-post div:last-child p.lead {
+  margin-top: 9px;
+  margin-bottom: 5px;
+  font-size: 18px; }
+.profile-page-style .body.container-fluid .container .new-post div:last-child:hover {
+  background-color: #4E4F50;
+  cursor: pointer; }
+.profile-page-style .body.container-fluid .container .creat-post {
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form {
+  background-color: #242526;
+  margin-left: 34.5%;
+  left: 3%;
+  position: absolute;
+  top: 25%;
+  width: 25%;
+  border-radius: 7.5px; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form .title {
+  color: #D3DADA;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 10px; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form i.btn {
+  font-size: 30px;
+  color: #D3DADA;
+  padding-top: 9px; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form .form-group img {
+  max-width: 100%;
+  border-radius: 50%;
+  max-height: 45px; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form .form-group p {
+  font-size: 14px; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form .form-group select {
+  font-size: 14px;
+  height: 25px;
+  padding: 0;
+  width: 80px;
+  background-color: #242526;
+  border: none;
+  cursor: pointer;
+  color: #fff; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form .form-group select option {
+  font-size: 14px;
+  border: none; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form .form-group textarea {
+  background-color: #242526;
+  border: none;
+  font-size: 24px;
+  color: #D3DADA;
+  resize: none;
+  height: 120px; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form .form-group textarea:focus {
+  box-shadow: none; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form .form-group label {
+  cursor: pointer; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form .form-group label i.fa-image {
+  font-size: 26px; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form .form-group label span.image-span {
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: inline-block; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form button {
+  background-color: #414144;
+  color: #D3DADA;
+  font-size: 14px;
+  font-weight: bold;
+  width: 80%;
+  transition: all ease-in-out 0.2s; }
+.profile-page-style .body.container-fluid .container .creat-post .create-post-form form button:hover {
+  background-color: #4E4F50; }
+
+/*# sourceMappingURL=main.css.map */
