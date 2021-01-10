@@ -4,7 +4,7 @@ class Post extends Controller{
 
 
     public function create(){
-        return;
+        
         # required logged in users
         require_login();
 
@@ -18,15 +18,19 @@ class Post extends Controller{
         if ($cap === null && $img === null)
             return $this->view('post/form');    // Need to return with an error massage told the user the post must be contains caption or image or both
 
+        if (!$img){
+            $img = NULL;
+        }
         $post = new post_model();
         $post->writer = $user;
         $post->caption = $cap;
         $post->date = date('Y-m-d');
         $post->is_public = $privacy;
         $post->image = $img;
+        print_r($_POST);
         $post->save();
 
-        return $this->view('post/form');
+        //return $this->view('post/form');
     }
 
     public function edit($post_id){
