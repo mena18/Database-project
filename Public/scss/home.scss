@@ -1,0 +1,30 @@
+.home-page-style {
+    color: #94999A;
+    background-color: #18191A;
+    padding-bottom: 25px;
+    .header.container-fluid {
+        background-color: #242526;
+        .container {
+            text-align: center;
+        }
+    }
+    hr {
+        background-color: #3E4041;
+    }
+    .body.container-fluid {
+        padding-top: 15px;
+        .container {
+            text-align: center;
+            .post-form {
+                .user-info, .post-write-comment {
+                    .user-name {
+                        margin-left: -70px;
+                    }
+                    .edit-btn-container {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

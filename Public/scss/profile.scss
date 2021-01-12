@@ -1,187 +1,24 @@
+@import "components/profile/profile_header";
+@import "components/profile/new_post";
+@import "components/profile/post_form";
+@import "components/profile/freind_list";
+@import "components/profile/edit-form";
+
+
 .profile-page-style {
     color: #94999A;
     background-color: #18191A;
-    height: 981px;
-    .container {
+    padding-bottom: 25px;
+    .post-container {
         width: 50%;
     }
     hr {
         background-color: #3E4041;
     }
-    .header.container-fluid {
-        background-color: #242526;
-        .container {
-            text-align: center;
-            .profile-image {
-                max-width: 43%;
-                margin-left: 28.5%;
-                padding-top: 10%;
-                img {
-                    max-width: inherit;
-                    border-radius: 50%;
-                }
-            }
-            .profile-data {
-                margin-top: 2.5%;
-                .name {
-                    font-weight: bolder;
-                    font-size: 30px;
-                    color: #D3DADA;
-                    .nickname {
-                        font-weight: 100;
-                    }
-                }
-                .about {
-                    font-size: 16px;
-                }
-            }
-            nav {
-                padding: 0;
-                ul {
-                    li {
-                        div {
-                            color: inherit;
-                            font-weight: bolder;
-                            padding: 10px 15px;
-                            border-radius: 10px 10px 0 0;
-                            transition: background-color ease-in-out 0.4s;
-                            &:hover {
-                                background-color: #3B3C3C;
-                            }
-                        }
-                        &.active {
-                            color: #3181EE;
-                            border-bottom: #3181EE solid 3px;
-                        }
-
-                    }
-                }
-            }
-        }
-    }
     .body.container-fluid {
         padding-top: 15px;
         .container {
             text-align: center;
-            .new-post {
-                background-color: #242526;
-                width: 80%;
-                margin-left: 10%;
-                border-radius: 5px;
-                padding: 15px;
-                height: 100px;
-                img {
-                    max-width: 100%;
-                    border-radius: 50%;
-                    max-height: 45px;
-                }
-                div:last-child {
-                    text-align: left;
-                    background-color: #414144;
-                    border-radius: 20px;
-                    max-height: 45px;
-                    transition: all ease-in-out 0.2s;
-                    p.lead {
-                        margin-top: 9px;
-                        margin-bottom: 5px;
-                        font-size: 18px;
-                    }
-                    &:hover {
-                        background-color: #4E4F50;
-                        cursor: pointer;
-                    }
-                }
-            }
-            .creat-post {
-                display: none;
-                height: 100%;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.75);
-                position: absolute;
-                top: 0;
-                left: 0;
-                .create-post-form {
-                    background-color: #242526;
-                    margin-left: 34.5%;
-                    left: 3%;
-                    position: absolute;
-                    top: 25%;
-                    width: 25%;
-                    border-radius: 7.5px;
-                    .title {
-                        color: #D3DADA;
-                        font-weight: bold;
-                        font-size: 20px;
-                        padding-top: 10px;
-                    }
-                    i.btn {
-                        font-size: 30px;
-                        color: #D3DADA;
-                        padding-top: 9px;
-                    }
-                    form {
-                        .form-group {
-                            img {
-                                max-width: 100%;
-                                border-radius: 50%;
-                                max-height: 45px;
-                            }
-                            p {
-                                font-size: 14px;
-                            }
-                            select {
-                                font-size: 14px;
-                                height: 25px;
-                                padding: 0;
-                                width: 80px;
-                                background-color: #242526;
-                                border: none;
-                                cursor: pointer;
-                                color: #fff;
-                                option {
-                                    font-size: 14px;
-                                    border: none;
-                                }
-                            }
-                            textarea {
-                                background-color: #242526;
-                                border: none;
-                                font-size: 24px;
-                                color: #D3DADA;
-                                resize: none;
-                                height: 120px;
-                                &:focus {
-                                    box-shadow: none;
-                                }
-                            }
-                            label {
-                                cursor: pointer;
-                                i.fa-image {
-                                    font-size: 26px;
-                                }
-                                span.image-span {
-                                    margin-left: 20px;
-                                    font-size: 18px;
-                                    font-weight: bold;
-                                    margin-bottom: 5px;
-                                    display: inline-block;
-                                }
-                            }
-                        }
-                        button {
-                            background-color: #414144;
-                            color: #D3DADA;
-                            font-size: 14px;
-                            font-weight: bold;
-                            width: 80%;
-                            transition: all ease-in-out 0.2s;
-                            &:hover {
-                                background-color: #4E4F50;
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }

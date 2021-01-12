@@ -1,0 +1,50 @@
+nav {
+    padding: 20px 0 0 !important;
+    ul {
+        li {
+            div {
+                color: inherit;
+                font-weight: bolder;
+                padding: 10px 15px;
+                border-radius: 10px 10px 0 0;
+                transition: background-color ease-in-out 0.4s;
+                a {
+                    color: inherit;
+                    &:hover {
+                        color: inherit;
+                        text-decoration: none;
+                    }
+                }
+                &:hover {
+                    background-color: #3B3C3C;
+                }
+            }
+            &.active {
+                color: #3181EE;
+                border-bottom: #3181EE solid 3px;
+            }
+
+        }
+    }
+    form {
+        input {
+            background-color: #242526 !important;
+            border: none !important;
+            color: #94999A !important;
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+        button {
+            margin-bottom: 20px;
+            background-color: #414144;
+            color: #D3DADA;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all ease-in-out 0.2s;
+            &:hover {
+                background-color: #4E4F50;
+            }
+        }
+    }
+}

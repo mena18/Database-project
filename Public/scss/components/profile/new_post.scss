@@ -1,0 +1,31 @@
+@import "post/new-post-popup";
+
+.new-post {
+    background-color: #242526;
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 5px;
+    padding: 15px;
+    height: 100px;
+    img {
+        max-width: 100%;
+        border-radius: 50%;
+        max-height: 45px;
+    }
+    div:last-child {
+        text-align: left;
+        background-color: #414144;
+        border-radius: 20px;
+        max-height: 45px;
+        transition: all ease-in-out 0.2s;
+        p.lead {
+            margin-top: 9px;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        &:hover {
+            background-color: #4E4F50;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,YAAa;EACT,aAAa,EAAE,IAAI;EACnB,cAAc,EAAE,IAAI;EACpB,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,IAAI;EACnB,gBAAI;IACA,SAAS,EAAE,GAAG;IACd,aAAa,EAAE,IAAI;IACnB,UAAU,EAAE,GAAG;IACf,YAAY,EAAE,IAAI;EAEtB,cAAE;IACE,OAAO,EAAE,YAAY;IACrB,UAAU,EAAE,IAAI;IAChB,KAAK,EAAE,OAAO;IACd,UAAU,EAAE,oBAAoB;IAChC,oBAAQ;MACJ,eAAe,EAAE,IAAI;MACrB,KAAK,EAAE,OAAO;;ACftB,gBAAI;EACA,YAAY,EAAE,IAAI;AAEtB,mBAAO;EACH,WAAW,EAAE,IAAI",
+"sources": ["components/profile/friend/friend-form.scss","friend-request-form.scss"],
+"names": [],
+"file": "friend-request-form.css"
+}

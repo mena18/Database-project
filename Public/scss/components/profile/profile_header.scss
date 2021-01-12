@@ -1,0 +1,51 @@
+.header.container-fluid {
+    background-color: #242526;
+    .container {
+        text-align: center;
+        .profile-image {
+            max-width: 43%;
+            margin-left: 28.5%;
+            padding-top: 10%;
+            img {
+                max-width: inherit;
+                border-radius: 50%;
+            }
+        }
+        .profile-data {
+            margin-top: 2.5%;
+            .name {
+                font-weight: bolder;
+                font-size: 30px;
+                color: #D3DADA;
+                .nickname {
+                    font-weight: 100;
+                }
+            }
+            .about {
+                font-size: 16px;
+            }
+        }
+        nav {
+            padding: 0;
+            ul {
+                li {
+                    div {
+                        color: inherit;
+                        font-weight: bolder;
+                        padding: 10px 15px;
+                        border-radius: 10px 10px 0 0;
+                        transition: background-color ease-in-out 0.4s;
+                        &:hover {
+                            background-color: #3B3C3C;
+                        }
+                    }
+                    &.active {
+                        color: #3181EE;
+                        border-bottom: #3181EE solid 3px;
+                    }
+
+                }
+            }
+        }
+    }
+}

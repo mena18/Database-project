@@ -1,0 +1,80 @@
+.post-form {
+  background-color: #242526;
+  width: 60%;
+  margin-left: 20%;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 15px; }
+  .post-form .user-info, .post-form .post-write-comment {
+    color: #E4E6EB; }
+    .post-form .user-info .user-photo img, .post-form .post-write-comment .user-photo img {
+      max-width: 100%;
+      border-radius: 50%;
+      max-height: 45px; }
+    .post-form .user-info .user-name, .post-form .post-write-comment .user-name {
+      margin-left: -40px;
+      font-weight: bold; }
+    .post-form .user-info .edit-btn-container, .post-form .post-write-comment .edit-btn-container {
+      margin-left: 120px; }
+      .post-form .user-info .edit-btn-container .edit-btn, .post-form .post-write-comment .edit-btn-container .edit-btn {
+        transition: all ease-in-out 0.2s;
+        color: #94999A; }
+        .post-form .user-info .edit-btn-container .edit-btn:hover, .post-form .post-write-comment .edit-btn-container .edit-btn:hover {
+          color: #414144;
+          cursor: pointer; }
+  .post-form .post-data {
+    color: #E4E6EB;
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px; }
+    .post-form .post-data p {
+      text-align: left;
+      font-size: 16px; }
+    .post-form .post-data div.image-cover {
+      max-width: 100%;
+      text-align: left; }
+      .post-form .post-data div.image-cover img {
+        max-width: 100%; }
+  .post-form .post-interaction {
+    margin-top: 15px;
+    padding-right: 25px;
+    font-size: 14px;
+    font-weight: bold; }
+    .post-form .post-interaction div.interaction-btn {
+      transition: all ease-in-out 0.2s; }
+      .post-form .post-interaction div.interaction-btn:hover {
+        color: #414144;
+        cursor: pointer; }
+    .post-form .post-interaction i.love-color {
+      color: #EE5770; }
+    .post-form .post-interaction span {
+      max-width: 20%;
+      overflow: hidden; }
+  .post-form .post-write-comment {
+    padding-left: 22.5px;
+    text-align: left; }
+    .post-form .post-write-comment textarea {
+      background-color: #414144;
+      border: none;
+      resize: none;
+      color: #E4E6EB;
+      border-radius: 50px;
+      height: auto;
+      max-height: 40px;
+      font-size: 14px; }
+      .post-form .post-write-comment textarea:focus {
+        box-shadow: none; }
+      .post-form .post-write-comment textarea::placeholder {
+        padding-top: 3px;
+        padding-left: 6px; }
+    .post-form .post-write-comment div.btn {
+      background-color: #414144;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 1.7px;
+      height: 37px;
+      transition: all ease-in-out 0.2s; }
+      .post-form .post-write-comment div.btn:hover {
+        background-color: #4E4F50; }
+
+/*# sourceMappingURL=post_form.css.map */

@@ -131,7 +131,8 @@ class Auth extends Controller{
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $user = user_model::where(["email"=>$_SESSION['email']])[0];
-            return $this->view("auth/profile_form",['user'=>$user]);
+            $posts = post_model::get_my_posts($_SESSION['email']);
+            return $this->view("auth/profile_form",['user'=>$user, 'posts'=>$posts]);
         }else{
             $old = validate($_POST,array(
                 "first_name"=>"required",

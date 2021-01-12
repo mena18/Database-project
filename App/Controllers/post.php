@@ -27,10 +27,9 @@ class Post extends Controller{
         $post->date = date('Y-m-d');
         $post->is_public = $privacy;
         $post->image = $img;
-        print_r($_POST);
         $post->save();
 
-        //return $this->view('post/form');
+//        return $this->view('auth/profile_form');
     }
 
     public function edit($post_id){

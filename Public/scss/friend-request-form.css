@@ -1,0 +1,25 @@
+.friend-form {
+  border-radius: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px; }
+  .friend-form img {
+    max-width: 18%;
+    border-radius: 15px;
+    margin-top: 5px;
+    margin-right: 50px; }
+  .friend-form a {
+    display: inline-block;
+    text-align: left;
+    color: #D3DADA;
+    transition: all ease-in-out 0.2s; }
+    .friend-form a:hover {
+      text-decoration: none;
+      color: #3E4041; }
+
+.friend-form img {
+  margin-right: 20px; }
+.friend-form button {
+  margin-left: 20px; }
+
+/*# sourceMappingURL=friend-request-form.css.map */

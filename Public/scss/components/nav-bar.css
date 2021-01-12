@@ -1,0 +1,28 @@
+nav {
+  padding: 15px 0; }
+  nav ul li div {
+    color: inherit;
+    font-weight: bolder;
+    padding: 10px 15px;
+    border-radius: 10px 10px 0 0;
+    transition: background-color ease-in-out 0.4s; }
+    nav ul li div:hover {
+      background-color: #3B3C3C; }
+  nav ul li.active {
+    color: #3181EE;
+    border-bottom: #3181EE solid 3px; }
+  nav form input {
+    background-color: inherit;
+    border: none;
+    color: #94999A; }
+  nav form button {
+    margin-bottom: 20px;
+    background-color: #414144;
+    color: #D3DADA;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all ease-in-out 0.2s; }
+    nav form button:hover {
+      background-color: #4E4F50; }
+
+/*# sourceMappingURL=nav-bar.css.map */

@@ -1,0 +1,108 @@
+.edit-form {
+    background-color: #242526;
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 5px;
+    padding: 10px;
+    form {
+        .form-row {
+            margin-bottom: 30px;
+            text-align: left;
+            input, select, textarea {
+                background-color: #242526;
+                border: none;
+                color: inherit;
+                &:focus {
+                    background-color: #242526;
+                    color: #D3DADA;
+                }
+            }
+            input {
+                &::placeholder {
+                    padding-left: 10px;
+                }
+                &[type=email] {
+                    color: #D3DADA;
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+                &[type=number]::-webkit-inner-spin-button, &[type=number]::-webkit-outer-spin-button {
+                    appearance: none;
+                    margin: 0;
+                }
+            }
+            select {
+                cursor: pointer;
+                padding-left: 18px;
+                &:hover {
+                    box-shadow: none;
+                }
+            }
+            textarea {
+                resize: none;
+                padding-left: 21px;
+                max-height: 150px;
+            }
+            label {
+                padding-left: 10px;
+                margin-bottom: 0;
+                color: #D3DADA;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        div.phone-numbers-list {
+            text-align: left;
+            margin-right: -60px;
+            margin-left: 50px;
+            overflow: hidden;
+            .new-phone-btn {
+                width: 15%;
+                margin-bottom: 20px;
+                background-color: #414144;
+                color: #D3DADA;
+                font-size: 14px;
+                font-weight: bold;
+                transition: all ease-in-out 0.2s;
+                &:hover {
+                    background-color: #4E4F50;
+                }
+                span {
+                    display: inline-block;
+                    padding-right: 15px;
+                }
+                i {
+                    font-size: 16px;
+                }
+            }
+            div.phone-numbers-container {
+                max-height: 150px;
+                overflow-y: scroll;
+                div.form-row {
+                    margin-top: 10px;
+                    margin-left: 2px;
+                    i.btn {
+                        margin-top: 1px;
+                        &:hover {
+                            color: #4E4F50;
+                        }
+                    }
+                }
+            }
+        }
+        button {
+            width: 70%;
+            margin-bottom: 20px;
+            background-color: #414144;
+            color: #D3DADA;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all ease-in-out 0.2s;
+            &:hover {
+                background-color: #4E4F50;
+            }
+        }
+    }
+}

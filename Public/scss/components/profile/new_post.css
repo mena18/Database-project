@@ -1,0 +1,109 @@
+.creat-post {
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000; }
+  .creat-post .create-post-form {
+    background-color: #242526;
+    margin-left: 34.5%;
+    left: 3%;
+    position: absolute;
+    top: 15%;
+    width: 25%;
+    border-radius: 7.5px; }
+    .creat-post .create-post-form .title {
+      color: #D3DADA;
+      font-weight: bold;
+      font-size: 20px;
+      padding-top: 10px; }
+    .creat-post .create-post-form i.btn {
+      font-size: 30px;
+      color: #D3DADA;
+      padding-top: 9px; }
+    .creat-post .create-post-form form .form-group img {
+      max-width: 100%;
+      border-radius: 50%;
+      max-height: 45px; }
+    .creat-post .create-post-form form .form-group p {
+      font-size: 14px; }
+    .creat-post .create-post-form form .form-group select {
+      font-size: 14px;
+      height: 25px;
+      padding: 0;
+      width: 80px;
+      background-color: #242526;
+      border: none;
+      cursor: pointer;
+      color: #fff; }
+      .creat-post .create-post-form form .form-group select option {
+        font-size: 14px;
+        border: none; }
+    .creat-post .create-post-form form .form-group textarea {
+      background-color: #242526;
+      border: none;
+      color: #D3DADA;
+      resize: none;
+      height: 120px;
+      margin-top: 15px;
+      font-size: 16px; }
+      .creat-post .create-post-form form .form-group textarea:focus {
+        box-shadow: none; }
+    .creat-post .create-post-form form .form-group label {
+      cursor: pointer; }
+      .creat-post .create-post-form form .form-group label span.image-span {
+        margin-left: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        display: inline-block; }
+    .creat-post .create-post-form form .display-image {
+      margin-bottom: 15px;
+      position: relative;
+      display: none;
+      padding-top: 5%; }
+      .creat-post .create-post-form form .display-image i {
+        position: absolute;
+        top: 0;
+        right: 20%;
+        font-size: 14px; }
+      .creat-post .create-post-form form .display-image img {
+        max-width: 50%; }
+    .creat-post .create-post-form form button {
+      background-color: #414144;
+      color: #D3DADA;
+      font-size: 14px;
+      font-weight: bold;
+      width: 80%;
+      transition: all ease-in-out 0.2s; }
+      .creat-post .create-post-form form button:hover {
+        background-color: #4E4F50; }
+
+.new-post {
+  background-color: #242526;
+  width: 60%;
+  margin-left: 20%;
+  border-radius: 5px;
+  padding: 15px;
+  height: 100px; }
+  .new-post img {
+    max-width: 100%;
+    border-radius: 50%;
+    max-height: 45px; }
+  .new-post div:last-child {
+    text-align: left;
+    background-color: #414144;
+    border-radius: 20px;
+    max-height: 45px;
+    transition: all ease-in-out 0.2s; }
+    .new-post div:last-child p.lead {
+      margin-top: 9px;
+      margin-bottom: 5px;
+      font-size: 18px; }
+    .new-post div:last-child:hover {
+      background-color: #4E4F50;
+      cursor: pointer; }
+
+/*# sourceMappingURL=new_post.css.map */

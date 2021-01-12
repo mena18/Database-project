@@ -39,7 +39,10 @@ class post_model extends DataBase {
         self::query($query);
     }
 
-
+    public static function get_my_posts($email) {
+        $query = "SELECT `caption` FROM `post` WHERE `writer`='$email'";
+        return self::query_fetch_all($query, 'post_model');
+    }
 
 
 }

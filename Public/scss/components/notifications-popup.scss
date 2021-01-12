@@ -1,0 +1,39 @@
+.creat-post {
+    .create-post-form {
+        .notifications-list {
+            max-height: 500px;
+            overflow-y: scroll;
+        }
+        .notification-container {
+            font-size: 14px !important;
+            color: inherit;
+            margin-bottom: 10px;
+            transition: all ease-in-out 0.2s;
+            max-width: 90%;
+            margin-left: 5%;
+            img {
+                max-width: 100%;
+                border-radius: 50%;
+                max-height: 45px;
+            }
+            span {
+                display: inline-block;
+                margin-left: 10px;
+            }
+            p {
+                font-size: 14px;
+                margin-left: 60px;
+            }
+            hr {
+                width: 75%;
+            }
+            &:hover {
+                color: #4E4F50;
+                text-decoration: none;
+            }
+        }
+        .without-hover {
+            color: inherit !important;
+        }
+    }
+}

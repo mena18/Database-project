@@ -1,0 +1,9 @@
+.creat-post .create-post-form .notification-container img {
+  max-width: 100%;
+  border-radius: 50%;
+  max-height: 45px; }
+.creat-post .create-post-form .notification-container a {
+  font-size: 14px !important;
+  color: inherit; }
+
+/*# sourceMappingURL=notifications-popup.css.map */

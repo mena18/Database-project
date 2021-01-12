@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGY,yDAAI;EACA,SAAS,EAAE,IAAI;EACf,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,IAAI;AAEpB,uDAAE;EACE,SAAS,EAAE,eAAe;EAC1B,KAAK,EAAE,OAAO",
+"sources": ["notifications-popup.scss"],
+"names": [],
+"file": "notifications-popup.css"
+}
