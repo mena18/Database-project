@@ -40,8 +40,15 @@ class post_model extends DataBase {
     }
 
     public static function get_my_posts($email) {
-        $query = "SELECT `caption` FROM `post` WHERE `writer`='$email'";
+        $query = "SELECT `post_id`, `caption`, `image` FROM `post` WHERE `writer`='$email' ORDER BY `post_id` DESC";
         return self::query_fetch_all($query, 'post_model');
+    }
+
+    public static function get_all_posts() {
+        $query = "SELECT `post_id`, `caption`, `image`, `first_name`, `last_name` FROM `post` JOIN `User` ON `writer`=`email` ORDER BY `post_id` DESC";
+//        $stmt = self::$conn->prepare($query);
+//        return DataBase::$conn->execute($query);
+//        return $stmt->fetchAll();
     }
 
 

@@ -123,4 +123,39 @@ function remove_phone_number (id) {
     $('#phone-number-' + id).remove();
 }
 
+function react(id) {
+    // id is the post_id
+    let url = 'react/'+id
+    fetch(url)
+        .then(response => {
+            let reactButton = $('#love-btn-'+id);
+            let reactsNumber = $('#react-number-'+id)
+            if (reactButton.hasClass('love-color')) {
+                reactButton.removeClass('love-color');
+                reactsNumber.html(parseInt(reactsNumber.html())-1);
+            }
+            else {
+                reactButton.addClass('love-color');
+                reactsNumber.html(parseInt(reactsNumber.html())+1);
+            }
+        })
+        .then(error => {
+
+        });
+
+}
+
+function share(id) {
+    // id is the post_id
+    console.log(id)
+    let url = 'share/' + id
+    fetch(url)
+        .then(response => {
+
+        })
+        .then(error => {
+
+        });
+}
+
 switch_active_btn('my-posts-btn');

@@ -3,8 +3,9 @@ class Home extends Controller{
 
 
 public function index(){
-    
-    $this->view('home/index');
+    $posts = post_model::get_my_posts($_SESSION['email']);
+    print_r($posts);
+    return $this->view("home/index",['posts'=>$posts]);
 }
     
 

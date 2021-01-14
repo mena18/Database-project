@@ -1,4 +1,4 @@
-<?php require_once(app_path('views/header.php')); ?>
+<?php require_once(app_path('views/header.php')); $posts = $data['posts'];?>
 
 
 <div class="home-page-style">
@@ -9,8 +9,17 @@
     </div>
     <div class="body container-fluid" id="profile-page-body">
         <div class="container post-container">
-            <?php require(app_path('views/components/profile/post.php'));?>
-            <?php require(app_path('views/components/profile/post.php'));?>
+
+            <?php
+            foreach ($posts as $post) {
+                $caption = $post->caption;
+                $image = $post->image;
+//                $first_name = $post->first_name;
+//                $last_name = $post->last_name;
+                require(app_path('views/components/profile/post.php'));
+            }
+            ?>
+
 <!--            --><?php //require(app_path('views/components/notifications-popup.php')); ?>
         </div>
     </div>
