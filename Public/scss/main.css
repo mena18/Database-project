@@ -112,13 +112,24 @@
   background-color: #242526; }
   .header.container-fluid .container {
     text-align: center; }
-    .header.container-fluid .container .profile-image {
+    .header.container-fluid .container form.profile-photo-form {
       max-width: 43%;
       margin-left: 28.5%;
-      padding-top: 10%; }
-      .header.container-fluid .container .profile-image img {
+      padding-top: 10%;
+      position: relative; }
+      .header.container-fluid .container form.profile-photo-form img, .header.container-fluid .container form.profile-photo-form i {
+        transition: all ease-in-out 0.4s; }
+        .header.container-fluid .container form.profile-photo-form img:hover, .header.container-fluid .container form.profile-photo-form i:hover {
+          cursor: pointer;
+          opacity: 0.4; }
+      .header.container-fluid .container form.profile-photo-form img {
         max-width: inherit;
         border-radius: 50%; }
+      .header.container-fluid .container form.profile-photo-form i {
+        position: absolute;
+        font-size: 32px;
+        top: 90%;
+        right: 47%; }
     .header.container-fluid .container .profile-data {
       margin-top: 2.5%; }
       .header.container-fluid .container .profile-data .name {
@@ -142,6 +153,12 @@
       .header.container-fluid .container nav ul li.active {
         color: #3181EE;
         border-bottom: #3181EE solid 3px; }
+      .header.container-fluid .container nav ul li#my-friend-requests {
+        position: relative; }
+        .header.container-fluid .container nav ul li#my-friend-requests span {
+          position: absolute;
+          top: 0;
+          color: #D3DADA; }
 
 .creat-post {
   display: none;
@@ -273,10 +290,10 @@
       border-radius: 50%;
       max-height: 45px; }
     .post-form .user-info .user-name, .post-form .post-write-comment .user-name {
-      margin-left: -40px;
+      margin-left: -70px;
       font-weight: bold; }
     .post-form .user-info .edit-btn-container, .post-form .post-write-comment .edit-btn-container {
-      margin-left: 120px; }
+      margin-left: 180px; }
       .post-form .user-info .edit-btn-container .edit-btn, .post-form .post-write-comment .edit-btn-container .edit-btn {
         transition: all ease-in-out 0.2s;
         color: #94999A; }
@@ -359,8 +376,8 @@
 
 .friends-list {
   background-color: #242526;
-  width: 80%;
-  margin-left: 10%;
+  width: 90%;
+  margin-left: 5%;
   border-radius: 5px;
   padding-top: 5px;
   padding-bottom: 10px; }
@@ -450,8 +467,6 @@
   color: #94999A;
   background-color: #18191A;
   padding-bottom: 25px; }
-  .profile-page-style .post-container {
-    width: 50%; }
   .profile-page-style hr {
     background-color: #3E4041; }
   .profile-page-style .body.container-fluid {
@@ -504,8 +519,6 @@
     padding-top: 15px; }
     .home-page-style .body.container-fluid .container {
       text-align: center; }
-      .home-page-style .body.container-fluid .container .post-form .user-info .user-name, .home-page-style .body.container-fluid .container .post-form .post-write-comment .user-name {
-        margin-left: -70px; }
       .home-page-style .body.container-fluid .container .post-form .user-info .edit-btn-container, .home-page-style .body.container-fluid .container .post-form .post-write-comment .edit-btn-container {
         display: none; }
 

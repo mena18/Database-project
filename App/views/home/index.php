@@ -11,7 +11,7 @@
         <div class="container post-container">
             <?php require(app_path('views/components/profile/post.php'));?>
             <?php require(app_path('views/components/profile/post.php'));?>
-            <?php require(app_path('views/components/notifications-popup.php')); ?>
+<!--            --><?php //require(app_path('views/components/notifications-popup.php')); ?>
         </div>
     </div>
 </div>

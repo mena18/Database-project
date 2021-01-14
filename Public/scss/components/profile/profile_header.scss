@@ -2,13 +2,27 @@
     background-color: #242526;
     .container {
         text-align: center;
-        .profile-image {
+        form.profile-photo-form {
             max-width: 43%;
             margin-left: 28.5%;
             padding-top: 10%;
+            position: relative;
+            img, i {
+                transition: all ease-in-out 0.4s;
+                &:hover {
+                    cursor: pointer;
+                    opacity: 0.4;
+                }
+            }
             img {
                 max-width: inherit;
                 border-radius: 50%;
+            }
+            i {
+                position: absolute;
+                font-size: 32px;
+                top: 90%;
+                right: 47%;
             }
         }
         .profile-data {
@@ -43,7 +57,15 @@
                         color: #3181EE;
                         border-bottom: #3181EE solid 3px;
                     }
+                    &#my-friend-requests {
+                        position: relative;
+                        span {
+                            position: absolute;
+                            top: 0;
+                            color: #D3DADA;
 
+                        }
+                    }
                 }
             }
         }

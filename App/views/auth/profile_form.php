@@ -21,7 +21,10 @@
                 <?php require(app_path('views/components/profile/friend-list.php'));?>
             </div>
             <div class="container friend-container" id="friend-requests-container">
-                <?php require(app_path('views/components/friend-request-list.php')); ?>
+                <?php require(app_path('views/components/profile/friend-request-list.php')); ?>
+            </div>
+            <div class="container friend-container" id="blocked-users-container">
+                <?php require(app_path('views/components/profile/blocked-list.php')); ?>
             </div>
             <div class="container edit-container" id="edit-container">
                 <?php require(app_path('views/components/profile/edit-form.php'))?>

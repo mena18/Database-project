@@ -39,30 +39,32 @@ function hide_signup_popup() {
 })();
 
 //-- My Profile page --//
-let navBtnId = ['my-posts-btn', 'my-friends-btn', 'edit-my-profile-btn', 'my-friend-requests'];
-let profileBodyContainers = ['posts-container', 'friends-container', 'friend-requests-container', 'edit-container'];
+let navBtnId = ['my-posts-btn', 'my-friends-btn', 'my-friend-requests', 'edit-my-profile-btn', 'blocked-users-btn'];
+let profileBodyContainers = ['posts-container', 'friends-container', 'friend-requests-container', 'edit-container', 'blocked-users-container'];
 let currentYPosition = null;
 
 function switch_active_btn(btn_id) {
     for (let i = 0; i < navBtnId.length; i++)
         $('#'+navBtnId[i]).removeClass('active');
     $('#'+btn_id).addClass('active');
-    let arr = [0, 0, 0, 0];
+    let arr = [0, 0, 0, 0, 0];
     if (btn_id === 'my-posts-btn')
         arr[0] = 1;
     else if (btn_id === 'my-friends-btn')
         arr[1] = 1;
     else if (btn_id === 'my-friend-requests')
         arr[2] = 1;
-    else
+    else if (btn_id === 'edit-my-profile-btn')
         arr[3] = 1;
+    else
+        arr[4] = 1;
     for (let i = 0; i < arr.length; i++) {
         let el = $('#'+profileBodyContainers[i]);
         if (arr[i] === 0)
             el.css('display', 'none')
         else
             el.css('display', 'block');
-        console.log(i + '   '  + arr[i] + '   ' + el.css('display') + '   ' + el.attr('id'))
+        // console.log(profileBodyContainers[i] + '   ' + i + '   '  + arr[i] + '   ' + el.css('display') + '   ' + el.attr('id'))
     }
 }
 
