@@ -9,9 +9,12 @@
     </div>
     <div class="body container-fluid" id="profile-page-body">
         <div class="container post-container">
-            <?php require(app_path('views/components/profile/post.php'));?>
-            <?php require(app_path('views/components/profile/post.php'));?>
-<!--            --><?php //require(app_path('views/components/notifications-popup.php')); ?>
+            
+        
+        <?php foreach ($data["posts"] as $post) {  ?>
+            <?php require(app_path('views/components/profile/post.php')); ?>                    
+        <?php } ?>
+
         </div>
     </div>
 </div>

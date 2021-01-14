@@ -3,16 +3,18 @@ class Home extends Controller{
 
 
 public function index(){
+    $posts = post_model::get_home_page($_SESSION['email']);
     
-    $this->view('home/index');
+    $this->view('home/index',["posts"=>$posts]);
 }
     
 
 
 public function search(){
-    // search for user with this name excluding the user how blocked you then display them  
-    
-    $this->view('home/search');
+    $search = $_POST['search'];
+    $users = user_model::search_user($search);
+
+    $this->view('home/search',['users'=>$users,"search"=>$search]);
     
 }
     

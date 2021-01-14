@@ -43,9 +43,12 @@ class DataBase{
 		$stmt->execute();
 	}
 
-	public static function get_all(){
+	public static function get_all($limit=0){
 		$tab_name = static::$table_name;
 		$sql = "SELECT * FROM $tab_name";
+		if($limit>0){
+			$sql = "SELECT * FROM $tab_name LIMIT $limit";
+		}
 		return self::query_fetch_all($sql);
 	}
 

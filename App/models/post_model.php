@@ -6,6 +6,46 @@ class post_model extends DataBase {
     public static $primary_key = "post_id";
     public static $fill = ['writer','caption','date','is_public','image'];
 
+
+
+    public static function get_home_page($email){
+        
+        $query = "
+      select 
+        post.*, 
+        User.first_name AS user_first_name, 
+        User.last_name AS user_last_name, 
+        User.picture AS user_picture, 
+        Count(comment.comment_id) AS n_comments, 
+        Count(react.email) AS n_reacts 
+      from 
+        post 
+        inner join User on post.writer = User.email 
+        LEFT outer join comment on comment.post_id = post.post_id 
+        LEFT outer join react on react.post_id = post.post_id 
+      where 
+        post.writer in (
+          select 
+            friend.user_1 as email 
+          from 
+            friend 
+          where 
+            friend.user_2 = '$email' 
+          UNION 
+          select 
+            friend.user_2 as email 
+          from 
+            friend 
+          where 
+            friend.user_1 = '$email'
+        ) 
+      GROUP BY 
+        post_id
+        ";
+        return self::query_fetch_all($query,"post_model");
+    }
+
+
     public static function create($data = []) {
         $query = "INSERT INTO `" . self::$table_name .'` VALUES(';
 

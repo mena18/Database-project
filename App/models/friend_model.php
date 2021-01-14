@@ -40,11 +40,12 @@ class friend_model extends DataBase {
         self::query("DELETE from block WHERE blocker = '$blocker' AND blocked = $blocked ");
     }
 
-    public static function friends($user){
+    public static function friends($email){
+        
         $query = "
         Select User.email,User.first_name,User.last_name,User.picture,friend_table.date from User inner join  
-        (select friend.user_1 as email,friend.date from friend where friend.user_2 = 'menan381@gmail.com'  UNION 
-        select friend.user_2 as email,friend.date from friend where friend.user_1 = 'menan381@gmail.com') AS friend_table  on friend_table.email=User.email
+        (select friend.user_1 as email,friend.date from friend where friend.user_2 = '$email'  UNION 
+        select friend.user_2 as email,friend.date from friend where friend.user_1 = '$email') AS friend_table  on friend_table.email=User.email
         ";
         return self::query_fetch_all($query,"user_model");
     }
@@ -53,10 +54,10 @@ class friend_model extends DataBase {
         return  self::get_one("select * from friend WHERE  (user_1 = '$user_1' AND user_2 = '$user_2') OR (user_2 = '$user_1' AND user_1 = '$user_2') ");
     }
 
-    public static function all_requests($user){
+    public static function all_requests($email){
         $query = "
         select User.email,User.first_name,User.last_name,User.picture,request_table.date from User inner join 
-        (select sender,date from request WHERE receiver = 'menan381@gmail.com' AND response is NULL) AS request_table 
+        (select sender,date from request WHERE receiver = '$email' AND response is NULL) AS request_table 
         on request_table.sender = User.email
         ";
         return  self::query_fetch_all($query,"user_model");
