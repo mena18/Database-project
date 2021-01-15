@@ -7,5 +7,10 @@ class phone_model extends DataBase {
     public static $fill = ['phone_num','email'];
 
 
+    public static function delete_all($email){
+        $query = "DELETE FROM phone WHERE email = '$email' ;";
+        self::query($query);
+    }
+
 
 }

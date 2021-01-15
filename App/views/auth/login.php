@@ -44,10 +44,10 @@
                     <form action="<?= url('auth/sign_up/') ?>" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="First name">
+                                <input type="text" class="form-control" name="first_name" placeholder="First name">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Last name">
+                                <input type="text" class="form-control" name="last_name" placeholder="Last name">
                             </div>
                         </div>
                         <div class="form-group">
@@ -61,13 +61,13 @@
                                 <span class="label">Date of birth</span>
                             </div>
                             <div class="form-group col-md-4">
-                                <select id="days" class="form-control"></select>
+                                <select name="day" id="days" class="form-control"></select>
                             </div>
                             <div class="form-group col-md-4">
-                                <select id="months" class="form-control"></select>
+                                <select name="month" id="months" class="form-control"></select>
                             </div>
                             <div class="form-group col-md-4">
-                                <select id="years" class="form-control"></select>
+                                <select name="year" id="years" class="form-control"></select>
                             </div>
                         </div>
                         <div class="form-row" style="margin-top: -17.5px;">

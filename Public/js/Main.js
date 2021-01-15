@@ -109,7 +109,7 @@ function add_new_phone() {
     newPhoneId = parseInt(newPhoneId) + 1;
     let newPhone = '<div class="form-row col-md-4 mb-3" id="phone-number-' + newPhoneId + '">\n' +
         '                    <div class="col">\n' +
-        '                        <input type="number" class="form-control" placeholder="phone">\n' +
+        '                        <input name="phones[]" type="number" class="form-control" placeholder="phone">\n' +
         '                    </div>\n' +
         '                    <div class="remove-btn col" onclick="remove_phone_number(' + newPhoneId + ')">\n' +
         '                        <i class="far fa-trash-alt btn"></i>\n' +

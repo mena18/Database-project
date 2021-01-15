@@ -1,9 +1,9 @@
 <div class="header container-fluid">
     <div class="container">
-        <form action="" class="profile-photo-form">
+        <form action="<?=url('auth/profile_photo')?>" method="POST" enctype="multipart/form-data" class="profile-photo-form">
             <img src="<?php echo public_path($profile_user->picture)?>" alt="" onclick="$('#profile-photo').click()">
             <i class="fas fa-camera" onclick="$('#profile-photo').click()"></i>
-            <input type="file" id="profile-photo" onchange="$('#change-profile-photo-btn').click()" hidden>
+            <input name="picture" type="file" id="profile-photo" onchange="$('#change-profile-photo-btn').click()" hidden>
             <input type="submit" id="change-profile-photo-btn" hidden>
         </form>
         <div class="profile-data">
@@ -31,7 +31,7 @@
                     </li>
                     <?php if($profile_user->email == $_SESSION['email']) { ?>
                         <li class="nav-item" id="my-friend-requests" onclick="switch_active_btn('my-friend-requests')">
-                            <div class="nav-link btn">Friend Requests<span>5</span></div>
+                            <div class="nav-link btn">Friend Requests<span><?= count($data['friend_requests']);?></span></div>
                         </li>
                         <li class="nav-item" id="blocked-users-btn" onclick="switch_active_btn('blocked-users-btn')">
                             <div class="nav-link btn">Blocked Users</div>
@@ -39,13 +39,14 @@
                         <li class="nav-item" id="edit-my-profile-btn" onclick="switch_active_btn('edit-my-profile-btn')">
                             <div class="nav-link btn">Edit</div>
                         </li>
+                    <?php }else{ ?>
+                        <li class="nav-item" id="edit-my-profile-btn">
+                            <div class="nav-link btn">Unfriend</div>
+                        </li>
+                        <li class="nav-item" id="edit-my-profile-btn">
+                            <div class="nav-link btn">Block</div>
+                        </li>
                     <?php } ?>
-                    <li class="nav-item" id="edit-my-profile-btn">
-                        <div class="nav-link btn">Unfriend</div>
-                    </li>
-                    <li class="nav-item" id="edit-my-profile-btn">
-                        <div class="nav-link btn">Block</div>
-                    </li>
                 </ul>
 
                 <ul class="navbar-nav ml-auto">

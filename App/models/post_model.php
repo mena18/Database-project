@@ -4,7 +4,7 @@ class post_model extends DataBase {
     public static $table_name = "post";
     public static $class_name = "post_model";
     public static $primary_key = "post_id";
-    public static $fill = ['writer','caption','date','is_public','image'];
+    public static $fill = ['writer','caption','is_public','image'];
 
 
 
