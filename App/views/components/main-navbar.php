@@ -11,7 +11,7 @@
 <!--            </li>-->
             <li class="nav-item">
                 <div class="nav-link btn">
-                    <a href="">Profile</a>
+                    <a href="<?=url('auth/profile')?>">Profile</a>
                 </div>
             </li>
         </ul>

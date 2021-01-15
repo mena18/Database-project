@@ -63,6 +63,30 @@ class friend_model extends DataBase {
         return  self::query_fetch_all($query,"user_model");
     }
 
+    public static function get_blocked($email){
+        $query = "
+      select 
+        User.email, 
+        User.first_name, 
+        User.last_name, 
+        User.picture, 
+        request_table.date 
+      from 
+        User 
+        inner join (
+          select 
+            blocked, 
+            date 
+          from 
+            block 
+          WHERE 
+            blocker = '$email'
+        ) AS request_table on request_table.blocked = User.email
+      
+        ";
+        return  self::query_fetch_all($query,"user_model");
+    }
+
 
     
 

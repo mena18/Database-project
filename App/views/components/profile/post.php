@@ -9,7 +9,6 @@
             </a>
         </div>
         <?php if($post->writer == $_SESSION['email']){ ?>
-            <?php echo "can edit" ?>
             <div class="user-name col-md-3 edit-btn-container">
                 <div class="edit-btn" onclick="show_form('edit-post')">
                     <i class="fas fa-edit"></i>

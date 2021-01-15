@@ -103,25 +103,45 @@ class Auth extends Controller{
 
 
     public function logout(){
-        // get the form data
-        // log the user in or return the form page with errors  
-        
         session_destroy();
         redirect("auth/login");
-        
-        
     }
 
-    public function my_posts(){
-        // get the form data
-        // log the user in or return the form page with errors  
-        
-        return $this->view("auth/posts");
-        
-        
+    public function profile($user_email=NULL){
+        require_login();
+
+        if($user_email && $user_email!=$_SESSION['email']){
+            $user = user_model::where(["email"=>$user_email])[0];
+            $posts =  post_model::get_my_posts($user_email);
+            $firends = friend_model::friends($user_email);
+
+            $this->view('auth/profile_form',[
+                "user"=>$user,
+                "posts"=>$posts,
+                "friends"=>$firends,
+            ]);
+
+
+        }else{
+            
+            $user = user_model::where(["email"=>$_SESSION['email']])[0];
+            $posts =  post_model::get_my_posts($_SESSION['email']);
+            $firends = friend_model::friends($_SESSION['email']);
+            $all_requests = friend_model::all_requests($_SESSION['email']);
+            $blocked_users = friend_model::get_blocked($_SESSION['email']);
+
+
+            $this->view('auth/profile_form',[
+                    "user"=>$user,
+                    "posts"=>$posts,
+                    "friends"=>$firends,
+                    "friend_requests"=>$all_requests,
+                    "blocked_users"=>$blocked_users
+            ]);
+        }   
     }
 
-    public function my_profile(){
+    public function edit_profile(){
         // get the form data
         // log the user in or return the form page with errors  
         

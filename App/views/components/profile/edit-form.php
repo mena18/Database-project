@@ -1,27 +1,26 @@
+<?php $user = $data['user']; ?>
 <div class="edit-form">
     <form action="">
         <div class="form-row">
             <div class="col">
-                <input type="text" class="form-control" value="Ahmed">
+                <input type="text" class="form-control" value="<?=$user->first_name?>">
             </div>
             <div class="col">
-                <input type="text" class="form-control" value="Mehanna">
+                <input type="text" class="form-control" value="<?=$user->last_name?>">
             </div>
             <div class="col">
-                <input type="text" class="form-control" value="mehanna-cw">
+                <input type="text" class="form-control" value="<?=$user->nick_name?>">
             </div>
         </div>
         <div class="form-row">
             <div class="col">
-                <input type="email" class="form-control" value="a@gmail.com" readonly>
+                <input type="email" class="form-control" value="<?=$user->email?>" readonly>
             </div>
-            <div class="col">
-                <input type="password" class="form-control" placeholder="New Password">
-            </div>
+            
             <div class="col">
                 <select name="" id="" class="form-control">
-                    <option value="male" selected>Male</option>
-                    <option value="female">Female</option>
+                    <option value="male"  <?php if($user->gender == "male"){echo "selected";} ?> >Male</option>
+                    <option value="female" <?php if($user->gender == "female"){echo "selected";} ?> >Female</option>
                 </select>
             </div>
         </div>
@@ -29,16 +28,13 @@
             <div class="col">
                 <label for="">About me</label>
                 <textarea class="form-control" name="" id="" rows="10" maxlength="250">
-Hope
-Computer Engineering
-Programmer
-Anime
-Fightiiing</textarea>
+<?= $user->about_me ?>
+</textarea>
             </div>
         </div>
         <div class="form-row">
             <div class="col">
-                <input type="text" class="form-control" value="Alex Alex Alex">
+                <input type="text" class="form-control" value="<?=$user->home_town?>">
             </div>
         </div>
         <div class="phone-numbers-list">

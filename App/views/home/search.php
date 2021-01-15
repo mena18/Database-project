@@ -10,7 +10,7 @@
     <div class="body container-fluid">
         <div class="container friend-container">
         <h1>Search result for "<?=$data['search']?>"</h1>
-            <?php require(app_path('views/components/profile/friend-list.php'));?>
+            <?php $users=$data['users']; require(app_path('views/components/profile/friend-list.php'));?>
         </div>
     </div>
 </div>
