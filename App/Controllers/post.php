@@ -5,11 +5,7 @@ class Post extends Controller{
 
     public function create(){
         
-        # required logged in users
         require_login();
-
-        if ($_SERVER['REQUEST_METHOD'] === 'GET')
-            return $this->view("post/form");
 
         $user = $_SESSION['email'];
         $cap = (strlen($_POST['caption'])) ? $_POST['caption'] : null;
@@ -29,46 +25,65 @@ class Post extends Controller{
         $post->image = $img;
         $post->save();
 
+        return redirect("auth/profile");
+
 //        return $this->view('auth/profile_form');
     }
 
     public function edit($post_id){
-        if ($_SERVER['REQUEST_METHOD'] === 'GET')
-            return $this->view("post/form"); // you should change post/form to be able to handle both creation and updates
+        require_login();
 
-        $cap = (strlen($_POST['caption'])) ? $_POST['caption'] : null;
+        $cap = (isset($_POST['caption'])) ? $_POST['caption'] : null;
         $img = upload_file("image");
-        $privacy = (isset($_POST['privacy'])) ? 1 : 0;
+        $privacy = (isset($_POST['privacy'])) ? $_POST['privacy'] : 0;
         if ($cap === null && $img === null)
-            return $this->view('post/form');    // Need to return with an error massage told the user the post must be contains caption or image or both
+            redirect('auth/profile');    // Need to return with an error massage told the user the post must be contains caption or image or both
 
+        $data=[];
+        $data['caption']=$cap;
+        $data['is_public']=$privacy == "public" ? 1 : 0 ;
+        if($img){
+            $data['image']=$img;
+        }
 
-        $data = [
-            'caption'   =>  $cap,
-            'is_public' =>  $privacy,
-            'image'     =>  $img
-        ];
         post_model::edit($post_id, $data);
-        return $this->view('post/form');
+        redirect("auth/profile");
     }
 
     public function delete($post_id) {
+        require_login();
         post_model::remove($post_id);
         return $this->view('post/form');
     }
 
 
     public function share($post_id){
-        echo "sharing post";
+        require_login();
+        
+        $email = $_SESSION['email'];
+        post::share($email,$post_id);
+        echo "shared successfully";
         
     }
 
     public function react($post_id){
+        require_login();
         
-        echo "reacting on a post";
+        $email = $_SESSION['email'];
+        $react = post::get_react($email,$post_id);
+        if($react){
+            post::delete_react($email,$post_id);    
+            echo "react deleted successfully";
+        }else{
+            post::add_react($email,$post_id);    
+            echo "react created successfully";
+        }
         
         
     }
+
+    
+    
 
     
 

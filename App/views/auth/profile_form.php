@@ -1,4 +1,4 @@
-<?php require_once(app_path('views/header.php')); $profile_user = $data['user']; $posts = $data['posts']?>
+<?php require_once(app_path('views/header.php')); $profile_user = $data['user'];$user = $data['user']; $posts = $data['posts']?>
 
     <div class="profile-page-style">
         <?php require_once(app_path('views/components/profile/profile_header.php'));?>

@@ -39,45 +39,20 @@ class post_model extends DataBase {
           where 
             friend.user_1 = '$email'
         ) 
+        
       GROUP BY 
         post_id
+        ORDER BY post.date DESC;
         ";
         return self::query_fetch_all($query,"post_model");
     }
 
 
-    // public static function create($data = []) {
-    //     $query = "INSERT INTO `" . self::$table_name .'` VALUES(';
+    public static function edit($post_id,$data = []) {
+      $query = "UPDATE post SET ".http_build_query($data,'',', ')." WHERE post.post_id = $post_id ";
+      self::query($query);
+    }
 
-    //     foreach ($data as $col => $val):
-    //         if (is_string($val))
-    //             $query .= "'" . $val . "',";
-    //         else
-    //             $query .= (($val === null)? 'NULL': $val) . ',';
-    //     endforeach;
-
-    //     $query[strlen($query) - 1] = ')';
-    //     $query .= ';';
-    //     self::query($query);
-    // }
-
-    // public static function remove($id) {
-    //     $query = 'DELETE FROM `' . self::$table_name . '` WHERE post_id='.$id;
-    //     self::query($query);
-    // }
-
-    // public static function edit($id, $data = []) {
-    //     $query = 'UPDATE ' . self::$table_name . ' SET ';
-    //     foreach ($data as $col => $val):
-    //         if (is_string($val))
-    //             $query .= $col . " = '" . $val . "',";
-    //         else
-    //             $query .= $col . " = " . (($val === null)? 'NULL': $val) . ',';
-    //     endforeach;
-    //     $query[strlen($query) - 1] = '';
-    //     $query .= 'WHERE post_id=' . $id;
-    //     self::query($query);
-    // }
 
     public static function get_my_posts($email) {
         $query = "
@@ -95,13 +70,33 @@ class post_model extends DataBase {
         LEFT outer join react on react.post_id = post.post_id 
       where 
         post.writer = '$email' 
+
       GROUP BY 
         (post.post_id)
+      ORDER BY post.date DESC;
       
       
 
         ";
         return self::query_fetch_all($query, 'post_model');
+    }
+
+
+    public static function share($email,$post_id){
+      $query = "insert into share (post_id,email) VALUES ('$post_id','$email')";
+      self::query($query);
+    }
+    public static function get_react($email,$post_id){
+      $query = "SELECT * from react WHERE post_id = '$post_id' AND email =  '$email'";
+      return  self::get_one($query);
+    }
+    public static function delete_react($email,$post_id){
+      $query = "DELETE from react WHERE post_id = '$post_id' AND email =  '$email'";
+      self::query($query);
+    }
+    public static function add_react($email,$post_id){
+      $query = "insert into react (post_id,email) VALUES ('$post_id','$email')";
+      self::query($query);
     }
 
 

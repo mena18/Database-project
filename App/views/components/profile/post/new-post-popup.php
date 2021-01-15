@@ -12,7 +12,7 @@
         <div class="outer-container">
             <form class="mb-5" action="<?php echo url('post/create') ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group text-left pl-3 mb-0">
-                    <img src="<?php echo public_path('images/profile_pic.jpg')?>" alt="">
+                    <img src="<?php echo public_path($user->picture)?>" alt="">
                     <p class="lead name d-inline-block pl-2"><?= $user->first_name ?> <?= $user->last_name ?></p>
                     <div class="form-group d-inline-block">
                         <select name="privacy" id="privacy" class="form-control">
