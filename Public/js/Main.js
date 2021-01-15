@@ -125,7 +125,7 @@ function remove_phone_number (id) {
 
 function react(id) {
     // id is the post_id
-    let url = 'react/'+id
+    let url = '/social/post/react/'+id
     fetch(url)
         .then(response => {
             let reactButton = $('#love-btn-'+id);
@@ -148,10 +148,11 @@ function react(id) {
 function share(id) {
     // id is the post_id
     console.log(id)
-    let url = 'share/' + id
+    let url = '/social/post/share/'+id
     fetch(url)
         .then(response => {
-
+            // TODO get better alerts styling
+            alert("you shared the post");
         })
         .then(error => {
 

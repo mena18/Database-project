@@ -33,6 +33,10 @@ class Post extends Controller{
     public function edit($post_id){
         require_login();
 
+
+        print_r($_POST);
+        #return ;
+
         $cap = (isset($_POST['caption'])) ? $_POST['caption'] : null;
         $img = upload_file("image");
         $privacy = (isset($_POST['privacy'])) ? $_POST['privacy'] : 0;
@@ -61,7 +65,7 @@ class Post extends Controller{
         require_login();
         
         $email = $_SESSION['email'];
-        post::share($email,$post_id);
+        post_model::share($email,$post_id);
         echo "shared successfully";
         
     }
@@ -70,13 +74,13 @@ class Post extends Controller{
         require_login();
         
         $email = $_SESSION['email'];
-        $react = post::get_react($email,$post_id);
+        $react = post_model::get_react($email,$post_id);
         if($react){
-            post::delete_react($email,$post_id);    
-            echo "react deleted successfully";
+            post_model::delete_react($email,$post_id);    
+            echo json_encode(["message"=>"react deleted successfully"]);
         }else{
-            post::add_react($email,$post_id);    
-            echo "react created successfully";
+            post_model::add_react($email,$post_id);    
+            echo json_encode(["message"=>"react created successfully"]);
         }
         
         

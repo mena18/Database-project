@@ -49,7 +49,12 @@ class post_model extends DataBase {
 
 
     public static function edit($post_id,$data = []) {
-      $query = "UPDATE post SET ".http_build_query($data,'',', ')." WHERE post.post_id = $post_id ";
+      $arr = [];
+      foreach ($data as $key => $value) {
+        $arr[] = " $key = '$value' ";  
+      }
+      $query = "UPDATE post SET ".implode(', ',$arr)." WHERE post.post_id = $post_id ";
+      
       self::query($query);
     }
 
@@ -107,6 +112,7 @@ class post_model extends DataBase {
       $query = "insert into react (post_id,email) VALUES ('$post_id','$email')";
       self::query($query);
     }
+
 
 
 }

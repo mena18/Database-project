@@ -3,7 +3,7 @@
 
 class App{
 
-  protected $controller = "test";
+  protected $controller = "home";
   protected $method = "index";
   protected $params = [];
 

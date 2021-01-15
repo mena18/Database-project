@@ -34,9 +34,10 @@
     <div class="post-interaction">
         <div class="row">
 
-            <div class="col-md-4 interaction-btn love-color" id="love-btn-<?php echo $post_id ?>" onclick="react(<?php echo $post_id ?>)">
+            <div class="col-md-4 interaction-btn <?php if($post->get_react($_SESSION['email'],$post_id)){echo 'love-color';} ?> " id="love-btn-<?php echo $post_id ?>" onclick="react(<?php echo $post_id ?>)">
                 <i class="fas fa-heart love-color"></i>
-                <span class="love-color"><?= $post->n_reacts ?></span>
+                <span id="react-number-<?php echo $post_id?>"><?= $post->n_reacts ?></span>
+
 
             </div>
             <div class="col-md-4 interaction-btn" id="show-comments-btn" onclick="show_form('comment-container-' + <?php echo $post_id?>)">

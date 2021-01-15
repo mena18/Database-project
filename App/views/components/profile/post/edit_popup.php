@@ -1,3 +1,4 @@
+<?php $caption=$post->caption;$post_id=$post->post_id; ?>
 <div class="creat-post" id="edit-post-<?php echo $post_id?>">
     <div class="create-post-form">
         <div class="header row">
@@ -26,7 +27,7 @@
                 </div>
                 <div class="display-image" id="edit-post-image-container">
                     <i class="fas fa-times-circle btn" onclick="$('#edit-post-image-container').css('display', 'none')"></i>
-                    <img src="<?php echo public_path($image)?>" alt="" id="edit-post-image">
+                    <img src="<?php echo public_path($post->image)?>" alt="" id="edit-post-image">
                 </div>
                 <div class="form-group pl-3">
                     <input type="file" name="image" id="edit-post-input-image" onchange="display_selected_image(this, 'edit-post-image')" hidden/>
