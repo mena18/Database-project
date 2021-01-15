@@ -7,36 +7,43 @@ class Friend extends Controller{
         require_login();
     
         $sender = $_SESSION['email'];
-        $reciever =  "menan381@gmail.com"; // $_POST['receiver'];
+        $receiver =  $_POST['receiver']; // $_POST['receiver'];
         
-        $s = friend_model::can_request($sender,$reciever);
+        $s = friend_model::can_request($sender,$receiver);
         if (!$s){
-            friend_model::send_request($sender,$reciever);
+            friend_model::send_request($sender,$receiver);
             echo "friend request is sent successfully";
         }else{
             echo "you already sent the friend request";
         }
+
+        redirect('auth/profile');
         
     }
         
+
     
 
     public function response(){
         require_login();
     
-        $sender =  "menan381@gmail.com"; // $_POST['sender'];
-        $response =  "accept"; // another option is reject // $_POST['response'];
-        $reciever = $_SESSION['email'];
+        // print_r($_POST);
+        // return ;
 
-        friend_model::respond($sender,$reciever,$response);
+        $sender =  $_POST['sender']; // $_POST['sender'];
+        $response =  $_POST['response']; // another option is reject // $_POST['response'];
+        $receiver = $_SESSION['email'];
+
+        friend_model::respond($sender,$receiver,$response);
 
         if($response == "accept"){
-            friend_model::create_friendship($sender,$reciever);
+            friend_model::create_friendship($sender,$receiver);
             echo "you and '$sender' are now friends ";
         }else{
             echo "you rejected the friend request from '$sender' ";
         }
 
+        redirect('auth/profile');
         
         
     }
@@ -46,14 +53,14 @@ class Friend extends Controller{
         require_login();
     
         $sender = $_SESSION['email'];
-        $reciever =  "menan381@gmail.com"; // $_POST['receiver'];
+        $receiver =  $_POST['receiver']; // $_POST['receiver'];
 
-        friend_model::remove_friendship($sender,$reciever);
-        friend_model::block($sender,$reciever);
+        friend_model::remove_friendship($sender,$receiver);
+        friend_model::block($sender,$receiver);
 
         echo "you successfully blocked '$sender' ";
         
-        
+        redirect('auth/profile');
         
     }
 
@@ -61,12 +68,13 @@ class Friend extends Controller{
         require_login();
     
         $sender = $_SESSION['email'];
-        $reciever =  "menan381@gmail.com"; // $_POST['receiver'];
+        $receiver =  $_POST['receiver']; // $_POST['receiver'];
 
-        friend_model::unblock($sender,$reciever);
+        friend_model::unblock($sender,$receiver);
 
         echo "you successfully unblocked '$sender' ";
         
+        redirect('auth/profile');
         
         
     }
@@ -79,13 +87,13 @@ class Friend extends Controller{
         require_login();
     
         $sender = $_SESSION['email'];
-        $reciever =  "menan381@gmail.com"; // $_POST['user'];
+        $receiver = $_POST['receiver']; // $_POST['user'];
 
-        friend_model::remove_friendship($sender,$reciever);
+        friend_model::remove_friendship($sender,$receiver);
 
         echo "your friendship with '$sender' is deleted ";
         
-        
+        redirect('auth/profile');
     }
 
     public function all(){

@@ -24,7 +24,7 @@ class friend_model extends DataBase {
         self::query("UPDATE request SET response = '$response' WHERE  sender = '$sender' AND receiver = '$receiver' AND response IS NULL ");
     }
 
-    public static function create_friendship($sender,$receiver,$response){
+    public static function create_friendship($sender,$receiver){
         self::query("insert into friend (user_1,user_2) VALUES ('$sender','$receiver')");
     }
 
@@ -34,10 +34,16 @@ class friend_model extends DataBase {
 
     public static function block($blocker,$blocked){
         self::query("insert into block (blocker,blocked) VALUES ('$blocker','$blocked')");
+        
+    }
+
+    public static function check_blocking($blocker,$blocked){
+        $query = "Select * from block WHERE (blocker = '$blocker' AND blocked = '$blocked') OR (blocker = '$blocked' AND blocked = '$blocker') ";
+        return  self::get_one($query);
     }
 
     public static function unblock($blocker,$blocked){
-        self::query("DELETE from block WHERE blocker = '$blocker' AND blocked = $blocked ");
+        self::query("DELETE from block WHERE blocker = '$blocker' AND blocked = '$blocked' ");
     }
 
     public static function friends($email){

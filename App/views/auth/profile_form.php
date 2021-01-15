@@ -15,6 +15,9 @@
                 
                 <?php 
                     $users=$data['friends']; 
+                    if($profile_user->email == $_SESSION['email']){
+                        $status="friends";
+                    }
                     require(app_path('views/components/profile/friend-list.php'));
                 ?>
                 
@@ -26,12 +29,14 @@
                 <div class="container friend-container" id="friend-requests-container">
                     <?php 
                         $users=$data['friend_requests']; 
+                        $status="request";
                         require(app_path('views/components/profile/friend-list.php'));
                     ?>
                 </div>
                 <div class="container friend-container" id="blocked-users-container">
                     <?php 
                         $users=$data['blocked_users']; 
+                        $status="block";
                         require(app_path('views/components/profile/friend-list.php'));
                     ?>
                 </div>

@@ -40,12 +40,26 @@
                             <div class="nav-link btn">Edit</div>
                         </li>
                     <?php }else{ ?>
-                        <li class="nav-item" id="edit-my-profile-btn">
-                            <div class="nav-link btn">Unfriend</div>
-                        </li>
-                        <li class="nav-item" id="edit-my-profile-btn">
-                            <div class="nav-link btn">Block</div>
-                        </li>
+
+                        <?php if ($data['is_friend'] ) { ?>
+                            <li class="nav-item" id="edit-my-profile-btn">
+                                <form class="d-inline-block" method="POST" action="<?=url('friend/delete')?>">
+                                    <input type="hidden" name="receiver" value="<?=$profile_user->email?>">
+                                    <button class="btn">Un Friend</button>
+                                </form>
+                            </li>
+
+                        <?php }else{ ?>
+                            <li class="nav-item" id="edit-my-profile-btn">
+                                <form class="d-inline-block" method="POST" action="<?=url('friend/send_request')?>">
+                                    <input type="hidden" name="receiver" value="<?=$profile_user->email?>">
+                                    <button class="btn">Send Friend Request</button>
+                                </form>
+                            </li>
+                        <?php } ?>
+
+                        
+                        
                     <?php } ?>
                 </ul>
 

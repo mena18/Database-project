@@ -101,13 +101,19 @@ class Auth extends Controller{
 
         if($user_email && $user_email!=$_SESSION['email']){
             $user = user_model::where(["email"=>$user_email])[0];
+            $is_blocked = friend_model::check_blocking($user_email,$_SESSION['email']);
+            if($is_blocked){
+                return redirect("auth/profile");
+            }
             $posts =  post_model::get_my_posts($user_email);
             $firends = friend_model::friends($user_email);
-
+            $is_friend = friend_model::check_friendship($user_email,$_SESSION['email']);
             $this->view('auth/profile_form',[
                 "user"=>$user,
                 "posts"=>$posts,
                 "friends"=>$firends,
+                "is_friend"=>$is_friend,
+
             ]);
 
 
