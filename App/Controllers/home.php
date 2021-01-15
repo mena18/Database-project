@@ -1,6 +1,7 @@
 <?php 
 class Home extends Controller{
 
+
     public function index(){
         require_login();
         $posts = post_model::get_home_page($_SESSION['email']);
@@ -14,5 +15,4 @@ class Home extends Controller{
         $this->view('home/search',['users'=>$users,"search"=>$search]);
         
     }
-    
 }

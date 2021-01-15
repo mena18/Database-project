@@ -231,7 +231,6 @@
     .creat-post .create-post-form .display-image {
       margin-bottom: 15px;
       position: relative;
-      display: none;
       padding-top: 5%; }
       .creat-post .create-post-form .display-image i {
         position: absolute;
@@ -321,7 +320,7 @@
     .post-form .post-interaction div.interaction-btn {
       transition: all ease-in-out 0.2s; }
       .post-form .post-interaction div.interaction-btn:hover {
-        color: #414144;
+        color: #EE5770;
         cursor: pointer; }
     .post-form .post-interaction .love-color {
       color: #EE5770; }

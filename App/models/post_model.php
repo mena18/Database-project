@@ -55,6 +55,7 @@ class post_model extends DataBase {
 
 
     public static function get_my_posts($email) {
+
         $query = "
       SELECT 
         post.*, 
@@ -78,7 +79,15 @@ class post_model extends DataBase {
       
 
         ";
+
         return self::query_fetch_all($query, 'post_model');
+    }
+
+    public static function get_all_posts() {
+        $query = "SELECT `post_id`, `caption`, `image`, `first_name`, `last_name` FROM `post` JOIN `User` ON `writer`=`email` ORDER BY `post_id` DESC";
+//        $stmt = self::$conn->prepare($query);
+//        return DataBase::$conn->execute($query);
+//        return $stmt->fetchAll();
     }
 
 

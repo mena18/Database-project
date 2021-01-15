@@ -1,4 +1,4 @@
-<?php require_once(app_path('views/header.php')); ?>
+<?php require_once(app_path('views/header.php')); $posts = $data['posts'];?>
 
 
 <div class="home-page-style">
@@ -9,11 +9,13 @@
     </div>
     <div class="body container-fluid" id="profile-page-body">
         <div class="container post-container">
+
             
         
         <?php foreach ($data["posts"] as $post) {  ?>
             <?php require(app_path('views/components/profile/post.php')); ?>                    
         <?php } ?>
+
 
         </div>
     </div>
