@@ -9,6 +9,7 @@ class user_model extends DataBase {
 
     public static function search_user($data, $email){
         $query = "SELECT * FROM User WHERE email LIKE '%$data%' OR User.first_name LIKE '%$data%' OR User.last_name LIKE '%$data%'";
+        # TODO query not including the blocked people
         $users = self::query_fetch_all($query,"user_model");
         $searchResult = [];
         foreach ($users as $user):

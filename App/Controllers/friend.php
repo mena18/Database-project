@@ -96,27 +96,27 @@ class Friend extends Controller{
         redirect('auth/profile');
     }
 
-    public function all(){
+    // public function all(){
         
-        // get all friends as users
+    //     // get all friends as users
 
-        $user = $_SESSION['email'];
+    //     $user = $_SESSION['email'];
 
-        $users = friend_model::friends($user);
+    //     $users = friend_model::friends($user);
 
-        return $this->view("friends/all",['users'=>$users]);
+    //     return $this->view("friends/all",['users'=>$users]);
         
         
-    }
+    // }
 
-    public function requests(){
-        // view all upcoming friend requests
+    // public function requests(){
+    //     // view all upcoming friend requests
 
-        $user = $_SESSION['email'];
+    //     $user = $_SESSION['email'];
 
-        $users = friend_model::all_requests($user);
+    //     $users = friend_model::all_requests($user);
 
-        return $this->view("friends/requests",['users'=>$users]);
-    }
+    //     return $this->view("friends/requests",['users'=>$users]);
+    // }
 
 }

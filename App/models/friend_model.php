@@ -14,6 +14,7 @@ class friend_model extends DataBase {
         $a = self::get_one("select * from request WHERE  sender = '$sender' AND receiver = '$receiver' AND response IS NULL ");
         $b = self::get_one("select * from request WHERE  sender = '$receiver' AND receiver = '$sender' AND response IS NULL ");
         $c = self::get_one("select * from friend WHERE  (user_1 = '$sender' AND user_2 = '$receiver') OR (user_2 = '$sender' AND user_1 = '$receiver') ");
+        
 
         return $a || $b || $c;
     }
@@ -51,9 +52,33 @@ class friend_model extends DataBase {
     public static function friends($email){
         
         $query = "
-        Select User.email,User.first_name,User.last_name,User.picture,friend_table.date from User inner join  
-        (select friend.user_1 as email,friend.date from friend where friend.user_2 = '$email'  UNION 
-        select friend.user_2 as email,friend.date from friend where friend.user_1 = '$email') AS friend_table  on friend_table.email=User.email
+      Select 
+        User.email, 
+        User.first_name, 
+        User.last_name, 
+        User.picture, 
+        friend_table.date 
+      from 
+        User 
+        inner join (
+          select 
+            friend.user_1 as email, 
+            friend.date 
+          from 
+            friend 
+          where 
+            friend.user_2 = '$email' 
+          UNION 
+          select 
+            friend.user_2 as email, 
+            friend.date 
+          from 
+            friend 
+          where 
+            friend.user_1 = '$email'
+        ) AS friend_table on friend_table.email = User.email
+      
+
         ";
         return self::query_fetch_all($query,"user_model");
     }

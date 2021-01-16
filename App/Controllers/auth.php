@@ -106,8 +106,8 @@ class Auth extends Controller{
                 return redirect("auth/profile");
             }
             $posts =  post_model::get_my_posts($user_email);
-            $columns = array_column($posts, 'date');
-            array_multisort($columns, SORT_DESC, $posts);
+            // $columns = array_column($posts, 'date');
+            //array_multisort($columns, SORT_DESC, $posts);
             $friends = friend_model::friends($user_email);
             $is_friend = friend_model::check_friendship($user_email,$_SESSION['email']);
             $has_sent_request = friend_model::can_request($_SESSION['email'], $user_email);
@@ -124,8 +124,11 @@ class Auth extends Controller{
             
             $user = user_model::where(["email"=>$_SESSION['email']])[0];
             $posts =  post_model::get_my_posts($_SESSION['email']);
-            $columns = array_column($posts, 'date');
-            array_multisort($columns, SORT_DESC, $posts);
+            # TODO change sorting in the database
+            //$columns = array_column($posts, 'date');
+            //array_multisort($columns, SORT_DESC, $posts);
+
+
             $friends = friend_model::friends($_SESSION['email']);
             $all_requests = friend_model::all_requests($_SESSION['email']);
             $blocked_users = friend_model::get_blocked($_SESSION['email']);

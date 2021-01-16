@@ -12,7 +12,7 @@ class Comment extends Controller{
     public function create($post_id, $text){
         require_login();
 //        $comment = new comment_model();
-//        $comment->post_id = $post_id;
+//        $comment->post_id = $POST_ID;
 //        $comment->text = $text;
 //        $comment->writer = $_SESSION['email'];
 //        $comment->save();
