@@ -106,14 +106,17 @@ class Auth extends Controller{
                 return redirect("auth/profile");
             }
             $posts =  post_model::get_my_posts($user_email);
-            $firends = friend_model::friends($user_email);
+            $columns = array_column($posts, 'date');
+            array_multisort($columns, SORT_DESC, $posts);
+            $friends = friend_model::friends($user_email);
             $is_friend = friend_model::check_friendship($user_email,$_SESSION['email']);
+            $has_sent_request = friend_model::can_request($_SESSION['email'], $user_email);
             $this->view('auth/profile_form',[
                 "user"=>$user,
                 "posts"=>$posts,
-                "friends"=>$firends,
+                "friends"=>$friends,
                 "is_friend"=>$is_friend,
-
+                "can_send_friend_request" => $has_sent_request
             ]);
 
 
@@ -121,7 +124,9 @@ class Auth extends Controller{
             
             $user = user_model::where(["email"=>$_SESSION['email']])[0];
             $posts =  post_model::get_my_posts($_SESSION['email']);
-            $firends = friend_model::friends($_SESSION['email']);
+            $columns = array_column($posts, 'date');
+            array_multisort($columns, SORT_DESC, $posts);
+            $friends = friend_model::friends($_SESSION['email']);
             $all_requests = friend_model::all_requests($_SESSION['email']);
             $blocked_users = friend_model::get_blocked($_SESSION['email']);
             $phones = phone_model::where(['email'=>$_SESSION['email']]);
@@ -129,7 +134,7 @@ class Auth extends Controller{
             $this->view('auth/profile_form',[
                     "user"=>$user,
                     "posts"=>$posts,
-                    "friends"=>$firends,
+                    "friends"=>$friends,
                     "friend_requests"=>$all_requests,
                     "blocked_users"=>$blocked_users,
                     "phones"=>$phones

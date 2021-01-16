@@ -44,10 +44,10 @@
                     <form action="<?= url('auth/sign_up/') ?>" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="col">
-                                <input type="text" class="form-control" name="first_name" placeholder="First name">
+                                <input type="text" class="form-control" name="first_name" placeholder="First name" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" name="last_name" placeholder="Last name">
+                                <input type="text" class="form-control" name="last_name" placeholder="Last name" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -77,56 +77,24 @@
                             <div class="form-group form-check form-check-inline col-md-4">
                                 <label class="form-check-label" for="female">
                                     <span>Female</span>
-                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
                                 </label>
                             </div>
                             <div class="form-group form-check form-check-inline col-md-4">
                                 <label class="form-check-label" for="male">
                                     <span>Male</span>
-                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
                                 </label>
                             </div>
                         </div>
-<!--                        <div class="form-group">-->
-<!--                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>-->
-<!--                        </div>-->
-<!--                        <div class="form-group">-->
-<!--                            <input type="number" class="form-control" id="email" placeholder="Phone number" name="email" required>-->
-<!--                        </div>-->
-<!--                        <div class="form-group">-->
-<!--                            <label for="">-->
-<!--                                <span class="label">Profile picture</span>-->
-<!--                            </label>-->
-<!--                            <input type="file" class="form-control-file" id="email" placeholder="Profile picture" name="email" required>-->
-<!--                        </div>-->
-<!--                        <div class="form-group">-->
-<!--                            <input type="number" class="form-control" id="email" placeholder="Phone number" name="email" required>-->
-<!--                        </div>-->
-<!--                        <div class="form-row" style="margin-top: -17.5px;">-->
-<!--                            <div class="col-md-12">-->
-<!--                                <span class="label">Gender</span>-->
-<!--                            </div>-->
-<!--                            <div class="form-group form-check form-check-inline col-md-4">-->
-<!--                                <label class="form-check-label" for="female">-->
-<!--                                    <span>Female</span>-->
-<!--                                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">-->
-<!--                                </label>-->
-<!--                            </div>-->
-<!--                            <div class="form-group form-check form-check-inline col-md-4">-->
-<!--                                <label class="form-check-label" for="male">-->
-<!--                                    <span>Male</span>-->
-<!--                                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">-->
-<!--                                </label>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="form-group">-->
-<!--                            <input type="number" class="form-control" id="email" placeholder="Phone number" name="email" required>-->
-<!--                        </div>-->
                         <button class="btn btn-success">Sign Up</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $('body').css('background-color', '#F0F2F5');
+    </script>
 
 <?php require_once(app_path('views/footer.php')); ?>

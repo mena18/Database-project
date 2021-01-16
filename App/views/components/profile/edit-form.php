@@ -3,20 +3,19 @@
     <form method="POST" action="<?=url('auth/edit_profile')?>">
         <div class="form-row">
             <div class="col">
-                <input name="first_name" type="text" class="form-control" value="<?=$user->first_name?>">
+                <input name="first_name" type="text" class="form-control" placeholder="First Name" value="<?=$user->first_name?>" required>
             </div>
             <div class="col">
-                <input name="last_name" type="text" class="form-control" value="<?=$user->last_name?>">
+                <input name="last_name" type="text" class="form-control" placeholder="Last Name" value="<?=$user->last_name?>" required>
             </div>
             <div class="col">
-                <input name="nick_name" type="text" class="form-control" value="<?=$user->nick_name?>">
+                <input name="nick_name" type="text" class="form-control" placeholder="Nickname" value="<?=$user->nick_name?>">
             </div>
         </div>
         <div class="form-row">
             <div class="col">
                 <input type="email" class="form-control" value="<?=$user->email?>" readonly>
             </div>
-            
             <div class="col">
                 <select name="gender" id="" class="form-control">
                     <option value="male"  <?php if($user->gender == "male"){echo "selected";} ?> >Male</option>
@@ -34,7 +33,7 @@
         </div>
         <div class="form-row">
             <div class="col">
-                <input name="hone_town" type="text" class="form-control" value="<?=$user->home_town?>">
+                <input name="hone_town" type="text" class="form-control" placeholder="Address" value="<?=$user->home_town?>">
             </div>
         </div>
         <div class="phone-numbers-list">

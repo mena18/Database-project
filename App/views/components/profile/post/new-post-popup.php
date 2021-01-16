@@ -12,7 +12,11 @@
         <div class="outer-container">
             <form class="mb-5" action="<?php echo url('post/create') ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group text-left pl-3 mb-0">
-                    <img src="<?php echo public_path($user->picture)?>" alt="">
+                    <?php if ($profile_user->picture == '') { ?>
+                        <img src="<?php echo public_path('images/' . $profile_user->gender . '-profile-image.png')?>" alt="">
+                    <?php } else { ?>
+                        <img src="<?php echo public_path($profile_user->picture)?>" alt="">
+                    <?php } ?>
                     <p class="lead name d-inline-block pl-2"><?= $user->first_name ?> <?= $user->last_name ?></p>
                     <div class="form-group d-inline-block">
                         <select name="privacy" id="privacy" class="form-control">
@@ -24,7 +28,7 @@
                 <div class="form-group pl-1">
                     <textarea placeholder="What's on your mind?" class="form-control" name="caption" id="caption" cols="5" rows="5"></textarea>
                 </div>
-                <div class="display-image" id="create-post-image-container">
+                <div class="display-image" id="create-post-image-container" style="display: none">
                     <i class="fas fa-times-circle btn" onclick="$('#create-post-image-container').css('display', 'none')"></i>
                     <img src="#" alt="" id="create-post-image">
                 </div>

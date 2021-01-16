@@ -138,24 +138,61 @@ function react(id) {
                 reactButton.addClass('love-color');
                 reactsNumber.html(parseInt(reactsNumber.html())+1);
             }
-        })
-        .then(error => {
-
         });
 
 }
 
 function share(id) {
-    // id is the post_id
-    console.log(id)
     let url = '/social/post/share/'+id
     fetch(url)
         .then(response => {
-            // TODO get better alerts styling
-            alert("you shared the post");
-        })
-        .then(error => {
+            show_form('share-alert');
+        });
+}
 
+function comment(id) {
+    let url = '/social/comment/create/' + id + '/' + $('#comment-post-' + id).val().replace(' ', '+');
+    console.log(url);
+    if ($('#comment-post-' + id).val() === '')
+        return;
+    console.log(url);
+    fetch(url)
+        .then(response => {
+            $('#comment-post-' + id).val('');
+        });
+    displayComments(id);
+}
+
+function displayComments(id) {
+    let url = '/social/comment/list/' + id;
+    $.ajax({
+        url: url,
+        method: 'GET',
+        success: function (result) {
+            let comments = JSON.parse(result);
+            let commentContainer = $('#comment-inner-container-' + id);
+            commentContainer.empty();
+            for (let i = 0; i < comments.length; i++) {
+                let comment = '<a class="notification-container without-hover col-12 text-left pl-4">\n' +
+                    '                    <img src="http://localhost/social/Public/' + comments[i].picture + '" alt="">\n' +
+                    '                    <span>' + comments[i].first_name + ' ' + comments[i].last_name + '</span>\n' +
+                    '                    <p class="lead">' + comments[i].text + '</p>\n' +
+                    '                    <hr>\n' +
+                    '                </a>'
+                commentContainer.append(comment);
+            }
+        }
+    });
+    show_form('comment-container-' + id);
+}
+
+function deletePost(id, postDate) {
+    postDate = postDate.replace(' ', '+')
+    let url = '/social/post/delete/' + id + '/' + postDate;
+    console.log(url)
+    fetch(url)
+        .then(response => {
+            $('#post-container-' + id).remove();
         });
 }
 

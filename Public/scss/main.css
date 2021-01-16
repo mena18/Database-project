@@ -123,8 +123,11 @@
           cursor: pointer;
           opacity: 0.4; }
       .header.container-fluid .container form.profile-photo-form img {
-        max-width: inherit;
-        border-radius: 50%; }
+        height: 185px;
+        max-height: 185px;
+        width: 40%;
+        max-width: 40%;
+        border-radius: 100%; }
       .header.container-fluid .container form.profile-photo-form i {
         position: absolute;
         font-size: 32px;
@@ -142,13 +145,14 @@
         font-size: 16px; }
     .header.container-fluid .container nav {
       padding: 0; }
-      .header.container-fluid .container nav ul li div {
+      .header.container-fluid .container nav ul li div, .header.container-fluid .container nav ul li button {
         color: inherit;
         font-weight: bolder;
         padding: 10px 15px;
         border-radius: 10px 10px 0 0;
+        background-color: inherit;
         transition: background-color ease-in-out 0.4s; }
-        .header.container-fluid .container nav ul li div:hover {
+        .header.container-fluid .container nav ul li div:hover, .header.container-fluid .container nav ul li button:hover {
           background-color: #3B3C3C; }
       .header.container-fluid .container nav ul li.active {
         color: #3181EE;
@@ -194,9 +198,10 @@
       margin-right: -15px;
       overflow-y: scroll; }
     .creat-post .create-post-form .form-group img {
-      max-width: 100%;
       border-radius: 50%;
-      max-height: 45px; }
+      max-height: 45px;
+      height: 45px;
+      max-width: 10%; }
     .creat-post .create-post-form .form-group p {
       font-size: 14px; }
     .creat-post .create-post-form .form-group select {
@@ -258,9 +263,11 @@
   padding: 15px;
   height: 100px; }
   .new-post img {
-    max-width: 100%;
-    border-radius: 50%;
-    max-height: 45px; }
+    height: 45px;
+    max-height: 45px;
+    width: 57%;
+    max-width: 57%;
+    border-radius: 50%; }
   .new-post div:last-child {
     text-align: left;
     background-color: #414144;
@@ -285,14 +292,23 @@
   .post-form .user-info, .post-form .post-write-comment {
     color: #E4E6EB; }
     .post-form .user-info .user-photo img, .post-form .post-write-comment .user-photo img {
-      max-width: 100%;
+      height: 45px;
+      max-width: 60%;
       border-radius: 50%;
       max-height: 45px; }
     .post-form .user-info .user-name, .post-form .post-write-comment .user-name {
-      margin-left: -70px;
+      margin-left: -65px;
       font-weight: bold; }
+      .post-form .user-info .user-name a, .post-form .post-write-comment .user-name a {
+        color: inherit;
+        transition: all ease-in-out .2s; }
+        .post-form .user-info .user-name a:hover, .post-form .post-write-comment .user-name a:hover {
+          text-decoration: none;
+          color: #94999A; }
+    .post-form .user-info .date, .post-form .post-write-comment .date {
+      margin-left: 90px; }
     .post-form .user-info .edit-btn-container, .post-form .post-write-comment .edit-btn-container {
-      margin-left: 180px; }
+      margin-left: -20px; }
       .post-form .user-info .edit-btn-container .edit-btn, .post-form .post-write-comment .edit-btn-container .edit-btn {
         transition: all ease-in-out 0.2s;
         color: #94999A; }
@@ -320,8 +336,10 @@
     .post-form .post-interaction div.interaction-btn {
       transition: all ease-in-out 0.2s; }
       .post-form .post-interaction div.interaction-btn:hover {
-        color: #EE5770;
-        cursor: pointer; }
+        cursor: pointer;
+        color: #3B3C3C; }
+        .post-form .post-interaction div.interaction-btn:hover.love-btn {
+          color: #EE5770; }
     .post-form .post-interaction .love-color {
       color: #EE5770; }
     .post-form .post-interaction span {
@@ -493,7 +511,9 @@
       color: #3E4041; }
 
 .friend-form img {
-  margin-right: 20px; }
+  margin-right: 20px;
+  height: 87px;
+  max-height: 87px; }
 .friend-form button {
   margin-left: 20px;
   background-color: #414144;
@@ -523,37 +543,41 @@
 
 nav {
   padding: 20px 0 0 !important; }
-  nav ul li div {
-    color: inherit;
-    font-weight: bolder;
-    padding: 10px 15px;
-    border-radius: 10px 10px 0 0;
-    transition: background-color ease-in-out 0.4s; }
-    nav ul li div a {
-      color: inherit; }
-      nav ul li div a:hover {
-        color: inherit;
-        text-decoration: none; }
-    nav ul li div:hover {
-      background-color: #3B3C3C; }
-  nav ul li.active {
-    color: #3181EE;
-    border-bottom: #3181EE solid 3px; }
-  nav form input {
-    background-color: #242526 !important;
-    border: none !important;
-    color: #94999A !important; }
-    nav form input:focus {
-      box-shadow: none !important; }
-  nav form button {
-    margin-bottom: 20px;
-    background-color: #414144;
-    color: #D3DADA;
-    font-size: 14px;
-    font-weight: bold;
-    transition: all ease-in-out 0.2s; }
-    nav form button:hover {
-      background-color: #4E4F50; }
+  nav ul {
+    height: 66px; }
+    nav ul li div {
+      color: inherit;
+      font-weight: bolder;
+      padding: 10px 15px;
+      border-radius: 10px 10px 0 0;
+      transition: background-color ease-in-out 0.4s; }
+      nav ul li div a {
+        color: inherit; }
+        nav ul li div a:hover {
+          color: inherit;
+          text-decoration: none; }
+      nav ul li div:hover {
+        background-color: #3B3C3C; }
+    nav ul li.active {
+      color: #3181EE;
+      border-bottom: #3181EE solid 3px; }
+  nav form {
+    padding-bottom: 20px; }
+    nav form input {
+      background-color: #242526 !important;
+      border: none !important;
+      color: #94999A !important; }
+      nav form input:focus {
+        box-shadow: none !important; }
+    nav form button {
+      margin-bottom: 20px;
+      background-color: #414144;
+      color: #D3DADA;
+      font-size: 14px;
+      font-weight: bold;
+      transition: all ease-in-out 0.2s; }
+      nav form button:hover {
+        background-color: #4E4F50; }
 
 .creat-post .create-post-form .notifications-list {
   max-height: 500px;
@@ -566,9 +590,11 @@ nav {
   max-width: 90%;
   margin-left: 5%; }
   .creat-post .create-post-form .notification-container img {
-    max-width: 100%;
+    width: 13%;
+    max-width: 13%;
     border-radius: 50%;
-    max-height: 45px; }
+    height: 50px;
+    max-height: 50px; }
   .creat-post .create-post-form .notification-container span {
     display: inline-block;
     margin-left: 10px; }
@@ -582,5 +608,12 @@ nav {
     text-decoration: none; }
 .creat-post .create-post-form .without-hover {
   color: inherit !important; }
+
+html {
+  height: 100%; }
+
+body {
+  height: 100%;
+  background-color: #18191A; }
 
 /*# sourceMappingURL=main.css.map */

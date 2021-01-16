@@ -1,6 +1,7 @@
 nav {
     padding: 20px 0 0 !important;
     ul {
+        height: 66px;
         li {
             div {
                 color: inherit;
@@ -27,6 +28,7 @@ nav {
         }
     }
     form {
+        padding-bottom: 20px;
         input {
             background-color: #242526 !important;
             border: none !important;

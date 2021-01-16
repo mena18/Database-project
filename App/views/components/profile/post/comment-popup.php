@@ -10,61 +10,7 @@
         </div>
         <hr>
         <div class="outer-container">
-            <div class="notifications-list row">
-                <a class="notification-container without-hover col-12 text-left pl-4">
-                    <img src="<?php echo public_path('images/profile_pic.jpg')?>" alt="">
-                    <span>Ahmed Mehanna</span>
-                    <p class="lead">
-                        This is the description of this notification
-                        This is the description of this notification
-                    </p>
-                    <hr>
-                </a>
-                <a class="notification-container without-hover col-12 text-left pl-4">
-                    <img src="<?php echo public_path('images/profile_pic.jpg')?>" alt="">
-                    <span>Ahmed Mehanna</span>
-                    <p class="lead">
-                        This is the description of this notification
-                        This is the description of this notification
-                    </p>
-                    <hr>
-                </a>
-                <a class="notification-container without-hover col-12 text-left pl-4">
-                    <img src="<?php echo public_path('images/profile_pic.jpg')?>" alt="">
-                    <span>Ahmed Mehanna</span>
-                    <p class="lead">
-                        This is the description of this notification
-                        This is the description of this notification
-                    </p>
-                    <hr>
-                </a>
-                <a class="notification-container without-hover col-12 text-left pl-4">
-                    <img src="<?php echo public_path('images/profile_pic.jpg')?>" alt="">
-                    <span>Ahmed Mehanna</span>
-                    <p class="lead">
-                        This is the description of this notification
-                        This is the description of this notification
-                    </p>
-                    <hr>
-                </a>
-                <a class="notification-container without-hover col-12 text-left pl-4">
-                    <img src="<?php echo public_path('images/profile_pic.jpg')?>" alt="">
-                    <span>Ahmed Mehanna</span>
-                    <p class="lead">
-                        This is the description of this notification
-                        This is the description of this notification
-                    </p>
-                    <hr>
-                </a>
-                <a class="notification-container without-hover col-12 text-left pl-4">
-                    <img src="<?php echo public_path('images/profile_pic.jpg')?>" alt="">
-                    <span>Ahmed Mehanna</span>
-                    <p class="lead">
-                        This is the description of this notification
-                        This is the description of this notification
-                    </p>
-                </a>
-            </div>
+            <div class="notifications-list row" id="comment-inner-container-<?= $post_id ?>"></div>
         </div>
     </div>
 </div>

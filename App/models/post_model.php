@@ -7,6 +7,15 @@ class post_model extends DataBase {
     public static $fill = ['writer','caption','is_public','image'];
 
 
+    public static function remove($email, $id, $date) {
+        $query = "SELECT share.date FROM share WHERE share.post_id = '$id' AND share.email = '$email'";
+        $result = self::get_one($query);
+        if (is_array($result) && count($result) > 0)
+            $query = "DELETE FROM share WHERE share.post_id = '$id' AND share.email = '$email' AND share.date = '$date'";
+        else
+            $query = "DELETE FROM post WHERE post.post_id = '$id'";
+        self::query($query);
+    }
 
     public static function get_home_page($email){
         
@@ -60,39 +69,87 @@ class post_model extends DataBase {
 
 
     public static function get_my_posts($email) {
-
-        $query = "
-      SELECT 
-        post.*, 
-        User.first_name AS user_first_name, 
-        User.last_name AS user_last_name, 
-        User.picture AS user_picture, 
-        Count(comment.comment_id) AS n_comments, 
-        Count(react.email) AS n_reacts 
-      FROM 
-        post 
-        inner join User on post.writer = User.email 
-        LEFT outer join comment on comment.post_id = post.post_id 
-        LEFT outer join react on react.post_id = post.post_id 
-      where 
-        post.writer = '$email' 
-
-      GROUP BY 
-        (post.post_id)
-      ORDER BY post.date DESC;
-      
-      
-
-        ";
+        if ($email === $_SESSION['email'])
+            $query = "
+                SELECT
+                    post.post_id, post.writer, post.caption, post.is_public, post.image, post.date,
+                    User.first_name AS user_first_name,
+                    User.last_name AS user_last_name,
+                    User.picture AS user_picture,
+                    Count(comment.comment_id) AS n_comments,
+                    Count(react.email) AS n_reacts
+                    FROM
+                    post JOIN User ON post.writer = User.email
+                    LEFT outer join comment on comment.post_id = post.post_id 
+                    LEFT outer join react on react.post_id = post.post_id 
+                    WHERE post.writer = '$email'
+                    GROUP BY (post.date)
+                UNION
+                SELECT
+                    post.post_id, post.writer, post.caption, post.is_public, post.image, z.date,
+                    User.first_name AS user_first_name,
+                    User.last_name AS user_last_name,
+                    User.picture AS user_picture,
+                    Count(comment.comment_id) AS n_comments,
+                    Count(react.email) AS n_reacts
+                    FROM
+                    (SELECT * FROM share WHERE share.email = '$email') AS z
+                    LEFT JOIN post ON z.post_id = post.post_id
+                    JOIN User ON post.writer = User.email
+                    LEFT outer join comment on comment.post_id = post.post_id 
+                    LEFT outer join react on react.post_id = post.post_id 
+                    GROUP BY (z.date)
+            ";
+        else {
+            $myEmail = $_SESSION['email'];
+            $query = "
+                SELECT
+                    post.post_id, post.writer, post.caption, post.is_public, post.image, post.date,
+                    User.first_name AS user_first_name,
+                    User.last_name AS user_last_name,
+                    User.picture AS user_picture,
+                    Count(comment.comment_id) AS n_comments,
+                    Count(react.email) AS n_reacts
+                    FROM
+                    post JOIN User ON post.writer = User.email
+                    LEFT outer join comment on comment.post_id = post.post_id 
+                    LEFT outer join react on react.post_id = post.post_id 
+                    WHERE post.writer = '$email'
+                    GROUP BY (post.date)
+                UNION
+                SELECT
+                    post.post_id, post.writer, post.caption, post.is_public, post.image, z.date,
+                    User.first_name AS user_first_name,
+                    User.last_name AS user_last_name,
+                    User.picture AS user_picture,
+                    Count(comment.comment_id) AS n_comments,
+                    Count(react.email) AS n_reacts
+                    FROM
+                    (SELECT * FROM share WHERE share.email = '$email') AS z
+                    LEFT JOIN post ON z.post_id = post.post_id
+                    JOIN User ON post.writer = User.email
+                    LEFT outer join comment on comment.post_id = post.post_id 
+                    LEFT outer join react on react.post_id = post.post_id 
+                    GROUP BY (z.date)
+               	UNION
+                SELECT
+                    post.post_id, post.writer, post.caption, post.is_public, post.image, post.date,
+                    User.first_name AS user_first_name,
+                    User.last_name AS user_last_name,
+                    User.picture AS user_picture,
+                    Count(comment.comment_id) AS n_comments,
+                    Count(react.email) AS n_reacts
+                    FROM
+                    post JOIN User ON post.writer = User.email
+                    LEFT outer join comment on comment.post_id = post.post_id 
+                    LEFT outer join react on react.post_id = post.post_id 
+                    WHERE post.writer = '$email'
+                    AND (SELECT COUNT(*) FROM friend WHERE friend.user_1 = '$myEmail' AND friend.user_2 = '$email' HAVING COUNT(*) > 0)
+                    GROUP BY (post.date)
+            ";
+        }
 
         return self::query_fetch_all($query, 'post_model');
-    }
-
-    public static function get_all_posts() {
-        $query = "SELECT `post_id`, `caption`, `image`, `first_name`, `last_name` FROM `post` JOIN `User` ON `writer`=`email` ORDER BY `post_id` DESC";
-//        $stmt = self::$conn->prepare($query);
-//        return DataBase::$conn->execute($query);
-//        return $stmt->fetchAll();
     }
 
 

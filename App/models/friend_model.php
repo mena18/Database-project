@@ -8,12 +8,14 @@ class friend_model extends DataBase {
 
     public static function can_request($sender,$receiver){
 
-        // you can;t send friend request if you already sent one 
+        // you can;t send friend request if you already sent one
+        // You can not send friend request if receiver have sent one to you
         // you can't send friend request if you are friends
-        $a = self::get_one("select * from request WHERE  sender = '$sender' AND receiver = '$receiver' AND response IS NULL ")  ;
-        $b = self::get_one("select * from friend WHERE  (user_1 = '$sender' AND user_2 = '$receiver') OR (user_2 = '$sender' AND user_1 = '$receiver') ");
+        $a = self::get_one("select * from request WHERE  sender = '$sender' AND receiver = '$receiver' AND response IS NULL ");
+        $b = self::get_one("select * from request WHERE  sender = '$receiver' AND receiver = '$sender' AND response IS NULL ");
+        $c = self::get_one("select * from friend WHERE  (user_1 = '$sender' AND user_2 = '$receiver') OR (user_2 = '$sender' AND user_1 = '$receiver') ");
 
-        return $a || $b;
+        return $a || $b || $c;
     }
     
     public static function send_request($sender,$receiver){

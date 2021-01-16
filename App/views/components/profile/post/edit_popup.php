@@ -13,19 +13,23 @@
         <div class="outer-container">
             <form class="mb-5" action="<?php echo url('post/edit/'.$post_id) ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group text-left pl-3 mb-0">
-                    <img src="<?php echo public_path('images/profile_pic.jpg')?>" alt="">
+                    <?php if ($profile_user->picture == '') { ?>
+                        <img src="<?php echo public_path('images/' . $profile_user->gender . '-profile-image.png')?>" alt="">
+                    <?php } else { ?>
+                        <img src="<?php echo public_path($profile_user->picture)?>" alt="">
+                    <?php } ?>
                     <p class="lead name d-inline-block pl-2"><?= $user->first_name ?> <?= $user->last_name ?></p>
                     <div class="form-group d-inline-block">
                         <select name="privacy" id="privacy" class="form-control">
-                            <option value="public" selected>public</option>
-                            <option value="private">private</option>
+                            <option value="public" <?php if($post->is_public == 1){echo "selected";} ?>>public</option>
+                            <option value="private" <?php if($post->is_public == 0){echo "selected";} ?>>private</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group pl-1">
                     <textarea placeholder="What's on your mind?" class="form-control" name="caption" id="caption" cols="5" rows="5"><?php echo $caption?></textarea>
                 </div>
-                <div class="display-image" id="edit-post-image-container">
+                <div class="display-image" id="edit-post-image-container" style="display: <?php if ($post->image === '') echo 'none'?>">
                     <i class="fas fa-times-circle btn" onclick="$('#edit-post-image-container').css('display', 'none')"></i>
                     <img src="<?php echo public_path($post->image)?>" alt="" id="edit-post-image">
                 </div>

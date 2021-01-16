@@ -54,10 +54,9 @@ class Post extends Controller{
         redirect("auth/profile");
     }
 
-    public function delete($post_id) {
+    public function delete($post_id, $date) {
         require_login();
-        post_model::remove($post_id);
-        return $this->view('post/form');
+        post_model::remove($_SESSION['email'], $post_id, $date);
     }
 
 

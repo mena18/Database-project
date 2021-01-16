@@ -9,8 +9,14 @@
     </div>
     <div class="body container-fluid">
         <div class="container friend-container">
-        <h1>Search result for "<?=$data['search']?>"</h1>
-            <?php $users=$data['users']; require(app_path('views/components/profile/friend-list.php'));?>
+            <?php
+                $users=$data['users'];
+                if (count($users) > 0)
+                    require(app_path('views/components/profile/friend-list.php'));
+                else {
+            ?>
+            <h1>Can not find users by searching about "<?=$data['search']?>"</h1>
+            <?php } ?>
         </div>
     </div>
 </div>

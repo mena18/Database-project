@@ -1,7 +1,11 @@
 <div class="header container-fluid">
     <div class="container">
         <form action="<?=url('auth/profile_photo')?>" method="POST" enctype="multipart/form-data" class="profile-photo-form">
-            <img src="<?php echo public_path($profile_user->picture)?>" alt="" onclick="$('#profile-photo').click()">
+            <?php if ($profile_user->picture == '') { ?>
+                <img src="<?php echo public_path('images/' . $profile_user->gender . '-profile-image.png')?>" alt="" onclick="$('#profile-photo').click()">
+            <?php } else { ?>
+                <img src="<?php echo public_path($profile_user->picture)?>" alt="" onclick="$('#profile-photo').click()">
+            <?php } ?>
             <i class="fas fa-camera" onclick="$('#profile-photo').click()"></i>
             <input name="picture" type="file" id="profile-photo" onchange="$('#change-profile-photo-btn').click()" hidden>
             <input type="submit" id="change-profile-photo-btn" hidden>
@@ -31,7 +35,15 @@
                     </li>
                     <?php if($profile_user->email == $_SESSION['email']) { ?>
                         <li class="nav-item" id="my-friend-requests" onclick="switch_active_btn('my-friend-requests')">
-                            <div class="nav-link btn">Friend Requests<span><?= count($data['friend_requests']);?></span></div>
+                            <div class="nav-link btn">
+                                Friend Requests
+                                <span>
+                                    <?php
+                                        if (count($data['friend_requests']) > 0)
+                                            echo count($data['friend_requests']);
+                                    ?>
+                                </span>
+                            </div>
                         </li>
                         <li class="nav-item" id="blocked-users-btn" onclick="switch_active_btn('blocked-users-btn')">
                             <div class="nav-link btn">Blocked Users</div>
@@ -40,26 +52,27 @@
                             <div class="nav-link btn">Edit</div>
                         </li>
                     <?php }else{ ?>
-
                         <?php if ($data['is_friend'] ) { ?>
-                            <li class="nav-item" id="edit-my-profile-btn">
+                            <li class="nav-item">
                                 <form class="d-inline-block" method="POST" action="<?=url('friend/delete')?>">
                                     <input type="hidden" name="receiver" value="<?=$profile_user->email?>">
                                     <button class="btn">Un Friend</button>
                                 </form>
                             </li>
-
-                        <?php }else{ ?>
-                            <li class="nav-item" id="edit-my-profile-btn">
+                        <?php }else if ($data['can_send_friend_request'] == 0) { ?>
+                            <li class="nav-item">
                                 <form class="d-inline-block" method="POST" action="<?=url('friend/send_request')?>">
                                     <input type="hidden" name="receiver" value="<?=$profile_user->email?>">
                                     <button class="btn">Send Friend Request</button>
                                 </form>
                             </li>
                         <?php } ?>
-
-                        
-                        
+                        <li class="nav-item">
+                            <form class="d-inline-block" method="POST" action="<?=url('friend/block')?>">
+                                <input type="hidden" name="receiver" value="<?=$user->email?>">
+                                <button class="btn">Block</button>
+                            </form>
+                        </li>
                     <?php } ?>
                 </ul>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 15, 2021 at 07:28 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Generation Time: Jan 16, 2021 at 11:58 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `block` (
-  `blocker` varchar(255) NOT NULL,
-  `blocked` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+                         `blocker` varchar(255) NOT NULL,
+                         `blocked` varchar(255) NOT NULL,
+                         `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -40,11 +40,11 @@ CREATE TABLE `block` (
 --
 
 CREATE TABLE `comment` (
-  `comment_id` int(11) NOT NULL,
-  `writer` varchar(255) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `text` text NOT NULL
+                           `comment_id` int(11) NOT NULL,
+                           `writer` varchar(255) NOT NULL,
+                           `post_id` int(11) NOT NULL,
+                           `date` timestamp NOT NULL DEFAULT current_timestamp(),
+                           `text` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -52,7 +52,10 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`comment_id`, `writer`, `post_id`, `date`, `text`) VALUES
-(1, 'menan381@gmail.com', 37, '2021-01-15 05:20:10', 'first comment');
+(5, 'ahmed@gmail.com', 51, '2021-01-16 10:23:19', 'Hello, this is my first comment'),
+(6, 'ahmed@gmail.com', 51, '2021-01-16 10:26:00', 'Testing the comment'),
+(11, 'ahmed@gmail.com', 47, '2021-01-16 10:43:13', 'Youre so nice'),
+(12, 'mehanna@gmail.com', 47, '2021-01-16 10:54:06', 'I agree with you, she is so nice');
 
 -- --------------------------------------------------------
 
@@ -61,9 +64,9 @@ INSERT INTO `comment` (`comment_id`, `writer`, `post_id`, `date`, `text`) VALUES
 --
 
 CREATE TABLE `friend` (
-  `user_1` varchar(255) NOT NULL,
-  `user_2` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+                          `user_1` varchar(255) NOT NULL,
+                          `user_2` varchar(255) NOT NULL,
+                          `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -71,7 +74,7 @@ CREATE TABLE `friend` (
 --
 
 INSERT INTO `friend` (`user_1`, `user_2`, `date`) VALUES
-('menan381@gmail.com', 'ahmad@gmail.com', '2021-01-15 06:25:37');
+('ahmed@gmail.com', 'mehanna@gmail.com', '2021-01-16 06:29:34');
 
 -- --------------------------------------------------------
 
@@ -80,17 +83,9 @@ INSERT INTO `friend` (`user_1`, `user_2`, `date`) VALUES
 --
 
 CREATE TABLE `phone` (
-  `phone_num` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+                         `phone_num` varchar(255) NOT NULL,
+                         `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `phone`
---
-
-INSERT INTO `phone` (`phone_num`, `email`) VALUES
-('4124124', 'menan381@gmail.com'),
-('51252', 'menan381@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -99,12 +94,12 @@ INSERT INTO `phone` (`phone_num`, `email`) VALUES
 --
 
 CREATE TABLE `post` (
-  `post_id` int(11) NOT NULL,
-  `writer` varchar(255) NOT NULL,
-  `caption` varchar(255) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `is_public` tinyint(1) NOT NULL,
-  `image` varchar(255) DEFAULT NULL
+                        `post_id` int(11) NOT NULL,
+                        `writer` varchar(255) NOT NULL,
+                        `caption` text DEFAULT NULL,
+                        `date` timestamp NOT NULL DEFAULT current_timestamp(),
+                        `is_public` tinyint(1) NOT NULL,
+                        `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -112,36 +107,10 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`post_id`, `writer`, `caption`, `date`, `is_public`, `image`) VALUES
-(2, 'ahmad@gmail.com', 'hello', '2021-01-04 22:00:00', 1, 'uploads/5fff993b443208.88037092.jpg'),
-(3, 'ahmad@gmail.com', NULL, '2021-01-05 22:00:00', 1, NULL),
-(4, 'ahmad@gmail.com', NULL, '2021-01-12 22:00:00', 1, NULL),
-(5, 'ahmad@gmail.com', NULL, '2020-12-31 22:00:00', 0, NULL),
-(6, 'ahmad@gmail.com', NULL, '2020-12-31 22:00:00', 0, NULL),
-(7, 'ahmad@gmail.com', NULL, '2020-12-31 22:00:00', 0, NULL),
-(8, 'ahmad@gmail.com', 's', '2020-12-31 22:00:00', 0, NULL),
-(9, 'ahmad@gmail.com', 'dsdf', '2020-12-31 22:00:00', 1, NULL),
-(10, 'ahmad@gmail.com', 'dsdf', '2020-12-31 22:00:00', 1, NULL),
-(11, 'ahmad@gmail.com', 'dsdf', '2020-12-31 22:00:00', 1, NULL),
-(12, 'ahmad@gmail.com', 'fff', '2020-12-31 22:00:00', 0, 'vv'),
-(15, 'ahmad@gmail.com', 'dsgfdggffgdfgdfg', '2020-12-31 22:00:00', 1, NULL),
-(16, 'ahmad@gmail.com', 'dsgfdggffgdfgdfg', '2020-12-31 22:00:00', 1, NULL),
-(17, 'ahmad@gmail.com', 'sdfljhkjsdfkjhsdf', '2020-12-31 22:00:00', 1, NULL),
-(18, 'ahmad@gmail.com', NULL, '2020-12-31 22:00:00', 0, '/opt/lampp/temp/phpFNLwzW'),
-(19, 'ahmad@gmail.com', 'dd', '2020-12-31 22:00:00', 0, NULL),
-(20, 'ahmad@gmail.com', 'dd', '2020-12-31 22:00:00', 0, NULL),
-(21, 'ahmad@gmail.com', 'dd', '2020-12-31 22:00:00', 0, NULL),
-(22, 'ahmad@gmail.com', NULL, '2020-12-31 22:00:00', 0, NULL),
-(23, 'ahmad@gmail.com', NULL, '2020-12-31 22:00:00', 0, NULL),
-(24, 'ahmad@gmail.com', 'simple post caption', '2021-01-02 22:00:00', 1, NULL),
-(26, 'menan381@gmail.com', 'new caption', '2021-01-02 22:00:00', 1, 'uploads/5ff1b92ad933b3.25135529.png'),
-(27, 'menan381@gmail.com', 'new caption', '2021-01-02 22:00:00', 1, 'uploads/5ff1b96c11c834.17123965.jpg'),
-(28, 'menan381@gmail.com', 'new caption', '2021-01-02 22:00:00', 1, 'uploads/5ff1b9e9aea5c4.85073530.jpg'),
-(29, 'menan381@gmail.com', 'last one please', '2021-01-02 22:00:00', 1, 'uploads/5ff1b9fe8b3502.59180699.png'),
-(33, 'menan381@gmail.com', 'new', '2021-01-09 22:00:00', 1, ''),
-(34, 'menan381@gmail.com', '', '2021-01-11 22:00:00', 1, ''),
-(35, 'menan381@gmail.com', 'mina  naeem updated his profile picture', '2021-01-15 03:02:24', 0, 'uploads/600105c019d7c2.78303860.png'),
-(36, 'menan381@gmail.com', 'mina  naeem updated his profile picture', '2021-01-15 03:02:31', 0, 'uploads/600105c6981dc3.69373642.png'),
-(37, 'menan381@gmail.com', 'freeedom', '2021-01-15 04:35:29', 1, 'uploads/6001346a87b159.13634686.jpg');
+(47, 'ahmed@gmail.com', 'Ahmed Mehanna updated his profile picture', '2021-01-16 03:29:51', 0, 'uploads/60025daf39e8e1.27556737.jpg'),
+(51, 'mehanna@gmail.com', 'Ahmed Mehanna updated his profile picture', '2021-01-16 03:52:18', 0, 'uploads/600262f2183124.61956336.jpg'),
+(60, 'ahmed@gmail.com', 'This is my public post', '2021-01-16 10:51:46', 1, ''),
+(61, 'ahmed@gmail.com', 'Akame ga kill', '2021-01-16 10:52:21', 0, 'uploads/6002c5658886f1.42954525.jpg');
 
 -- --------------------------------------------------------
 
@@ -150,9 +119,9 @@ INSERT INTO `post` (`post_id`, `writer`, `caption`, `date`, `is_public`, `image`
 --
 
 CREATE TABLE `react` (
-  `post_id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+                         `post_id` int(11) NOT NULL,
+                         `email` varchar(255) NOT NULL,
+                         `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -160,9 +129,8 @@ CREATE TABLE `react` (
 --
 
 INSERT INTO `react` (`post_id`, `email`, `date`) VALUES
-(35, 'menan381@gmail.com', '2021-01-15 05:59:36'),
-(36, 'menan381@gmail.com', '2021-01-15 05:54:43'),
-(37, 'menan381@gmail.com', '2021-01-15 06:21:34');
+(47, 'mehanna@gmail.com', '2021-01-16 10:54:45'),
+(61, 'mehanna@gmail.com', '2021-01-16 10:54:34');
 
 -- --------------------------------------------------------
 
@@ -171,10 +139,10 @@ INSERT INTO `react` (`post_id`, `email`, `date`) VALUES
 --
 
 CREATE TABLE `request` (
-  `sender` varchar(255) NOT NULL,
-  `receiver` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `response` varchar(100) DEFAULT NULL
+                           `sender` varchar(255) NOT NULL,
+                           `receiver` varchar(255) NOT NULL,
+                           `date` timestamp NOT NULL DEFAULT current_timestamp(),
+                           `response` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -182,7 +150,12 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`sender`, `receiver`, `date`, `response`) VALUES
-('menan381@gmail.com', 'ahmad@gmail.com', '2021-01-15 04:20:06', 'accept');
+('ahmed@gmail.com', 'mehanna@gmail.com', '2021-01-16 05:14:17', 'reject'),
+('ahmed@gmail.com', 'mehanna@gmail.com', '2021-01-16 06:29:16', 'accept'),
+('mehanna@gmail.com', 'ahmed@gmail.com', '2021-01-16 03:54:41', 'accept'),
+('mehanna@gmail.com', 'ahmed@gmail.com', '2021-01-16 05:00:16', 'reject'),
+('mehanna@gmail.com', 'ahmed@gmail.com', '2021-01-16 05:19:11', 'accept'),
+('mehanna@gmail.com', 'ahmed@gmail.com', '2021-01-16 06:28:50', 'reject');
 
 -- --------------------------------------------------------
 
@@ -191,9 +164,9 @@ INSERT INTO `request` (`sender`, `receiver`, `date`, `response`) VALUES
 --
 
 CREATE TABLE `share` (
-  `post_id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT current_timestamp()
+                         `post_id` int(11) NOT NULL,
+                         `email` varchar(255) NOT NULL,
+                         `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -201,8 +174,9 @@ CREATE TABLE `share` (
 --
 
 INSERT INTO `share` (`post_id`, `email`, `date`) VALUES
-(27, 'menan381@gmail.com', '2021-01-15 06:00:26'),
-(34, 'menan381@gmail.com', '2021-01-15 06:01:00');
+(51, 'ahmed@gmail.com', '2021-01-16 07:00:04'),
+(47, 'mehanna@gmail.com', '2021-01-16 10:53:35'),
+(61, 'mehanna@gmail.com', '2021-01-16 10:53:29');
 
 -- --------------------------------------------------------
 
@@ -211,7 +185,7 @@ INSERT INTO `share` (`post_id`, `email`, `date`) VALUES
 --
 
 CREATE TABLE `test` (
-  `name` varchar(255) NOT NULL
+    `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -231,17 +205,17 @@ INSERT INTO `test` (`name`) VALUES
 --
 
 CREATE TABLE `User` (
-  `email` varchar(400) NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `nick_name` varchar(255) DEFAULT NULL,
-  `password` varchar(300) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `birth_date` date NOT NULL,
-  `picture` varchar(200) NOT NULL,
-  `home_town` varchar(100) NOT NULL,
-  `status` varchar(20) NOT NULL,
-  `about_me` text NOT NULL
+                        `email` varchar(400) NOT NULL,
+                        `first_name` varchar(255) NOT NULL,
+                        `last_name` varchar(255) NOT NULL,
+                        `nick_name` varchar(255) DEFAULT NULL,
+                        `password` varchar(300) NOT NULL,
+                        `gender` varchar(10) NOT NULL,
+                        `birth_date` date NOT NULL,
+                        `picture` varchar(200) NOT NULL,
+                        `home_town` varchar(100) NOT NULL,
+                        `status` varchar(20) NOT NULL,
+                        `about_me` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -249,9 +223,8 @@ CREATE TABLE `User` (
 --
 
 INSERT INTO `User` (`email`, `first_name`, `last_name`, `nick_name`, `password`, `gender`, `birth_date`, `picture`, `home_town`, `status`, `about_me`) VALUES
-('ahmad@gmail.com', 'ahmed', 'mehanna', 'mehanna.cw', '1234', 'male', '2020-12-16', 'images/profile_pic.jpg', 'dddd', 'single', 'bla bla bla bla'),
-('email_1_please@gmail.com', 'please_1', 'please_1_1', '', '$2y$10$iTQTOS71cz/d5WEu.7yVC.pHgMAUE9xc7oaiIDg52FcJFi1Divoo2', 'male', '2019-04-15', '', '', '', 'this is amazing about me'),
-('menan381@gmail.com', 'mina ', 'naeem', '', '$2y$10$y/ZFoJq8TjwS//OdMgV0j.ArI6g2judxkvrv1KUqUXMt5BGJ0pSiO', 'male', '1999-03-05', 'uploads/600105c6981dc3.69373642.png', '', '', 'test about me');
+('ahmed@gmail.com', 'Ahmed', 'Mehanna', 'mehanna-cw', '$2y$10$8lc/0Eh5RcpZrNcOoGd5AO31yOqNjTMAVVgR3YVkgl3g079iB9fK6', 'male', '2021-01-16', 'uploads/60025daf39e8e1.27556737.jpg', '', '', 'Fighting'),
+('mehanna@gmail.com', 'Ahmed', 'Mehanna', '', '$2y$10$lUuR0Lh8Xj2/Av6Rnuy0z.4nC1V23KAapgcIrJ8S15lQU.wz81HXe', 'male', '2021-01-16', 'uploads/600262f2183124.61956336.jpg', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -261,14 +234,14 @@ INSERT INTO `User` (`email`, `first_name`, `last_name`, `nick_name`, `password`,
 -- Indexes for table `block`
 --
 ALTER TABLE `block`
-  ADD PRIMARY KEY (`blocker`,`blocked`),
+    ADD PRIMARY KEY (`blocker`,`blocked`),
   ADD KEY `FK_2` (`blocked`);
 
 --
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
-  ADD PRIMARY KEY (`comment_id`),
+    ADD PRIMARY KEY (`comment_id`),
   ADD KEY `FK_13` (`post_id`),
   ADD KEY `FK_14` (`writer`);
 
@@ -276,55 +249,55 @@ ALTER TABLE `comment`
 -- Indexes for table `friend`
 --
 ALTER TABLE `friend`
-  ADD PRIMARY KEY (`user_1`,`user_2`),
+    ADD PRIMARY KEY (`user_1`,`user_2`),
   ADD KEY `FK_4` (`user_2`);
 
 --
 -- Indexes for table `phone`
 --
 ALTER TABLE `phone`
-  ADD PRIMARY KEY (`phone_num`,`email`),
+    ADD PRIMARY KEY (`phone_num`,`email`),
   ADD KEY `FK_7` (`email`);
 
 --
 -- Indexes for table `post`
 --
 ALTER TABLE `post`
-  ADD PRIMARY KEY (`post_id`),
+    ADD PRIMARY KEY (`post_id`),
   ADD KEY `FK_12` (`writer`);
 
 --
 -- Indexes for table `react`
 --
 ALTER TABLE `react`
-  ADD PRIMARY KEY (`post_id`,`email`),
+    ADD PRIMARY KEY (`post_id`,`email`),
   ADD KEY `FK_9` (`email`);
 
 --
 -- Indexes for table `request`
 --
 ALTER TABLE `request`
-  ADD PRIMARY KEY (`sender`,`receiver`,`date`) USING BTREE,
+    ADD PRIMARY KEY (`sender`,`receiver`,`date`) USING BTREE,
   ADD KEY `FK_6` (`receiver`);
 
 --
 -- Indexes for table `share`
 --
 ALTER TABLE `share`
-  ADD PRIMARY KEY (`post_id`,`email`),
+    ADD PRIMARY KEY (`post_id`,`date`) USING BTREE,
   ADD KEY `FK_11` (`email`);
 
 --
 -- Indexes for table `test`
 --
 ALTER TABLE `test`
-  ADD PRIMARY KEY (`name`);
+    ADD PRIMARY KEY (`name`);
 
 --
 -- Indexes for table `User`
 --
 ALTER TABLE `User`
-  ADD PRIMARY KEY (`email`);
+    ADD PRIMARY KEY (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -334,13 +307,13 @@ ALTER TABLE `User`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+    MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+    MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- Constraints for dumped tables
@@ -350,54 +323,54 @@ ALTER TABLE `post`
 -- Constraints for table `block`
 --
 ALTER TABLE `block`
-  ADD CONSTRAINT `FK_1` FOREIGN KEY (`blocker`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `FK_1` FOREIGN KEY (`blocker`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_2` FOREIGN KEY (`blocked`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `FK_13` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `FK_13` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_14` FOREIGN KEY (`writer`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `friend`
 --
 ALTER TABLE `friend`
-  ADD CONSTRAINT `FK_3` FOREIGN KEY (`user_1`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `FK_3` FOREIGN KEY (`user_1`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_4` FOREIGN KEY (`user_2`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `phone`
 --
 ALTER TABLE `phone`
-  ADD CONSTRAINT `FK_7` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+    ADD CONSTRAINT `FK_7` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `post`
 --
 ALTER TABLE `post`
-  ADD CONSTRAINT `FK_12` FOREIGN KEY (`writer`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+    ADD CONSTRAINT `FK_12` FOREIGN KEY (`writer`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `react`
 --
 ALTER TABLE `react`
-  ADD CONSTRAINT `FK_8` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `FK_8` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_9` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `request`
 --
 ALTER TABLE `request`
-  ADD CONSTRAINT `FK_5` FOREIGN KEY (`sender`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `FK_5` FOREIGN KEY (`sender`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_6` FOREIGN KEY (`receiver`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `share`
 --
 ALTER TABLE `share`
-  ADD CONSTRAINT `FK_10` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    ADD CONSTRAINT `FK_10` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_11` FOREIGN KEY (`email`) REFERENCES `User` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 

@@ -5,3 +5,12 @@
 @import "home";
 @import "components/nav-bar";
 @import "components/notifications-popup";
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #18191A;
+}

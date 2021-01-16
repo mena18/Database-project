@@ -6,21 +6,17 @@ class Comment extends Controller{
     public function list($post_id){
         require_login();
         $comments = comment_model::list($post_id);
-        echo $comments
-        
-        
+        echo json_encode($comments);
     }
 
-    public function create($post_id){
+    public function create($post_id, $text){
         require_login();
-        
-        $comment = new comment_model();
-        $coment->post_id = $post_id;
-        $coment->text = $_POST['text'];
-        $coment->writer = $_SESSION['email'];
-    
-        $comment->save();
-        
+//        $comment = new comment_model();
+//        $comment->post_id = $post_id;
+//        $comment->text = $text;
+//        $comment->writer = $_SESSION['email'];
+//        $comment->save();
+        comment_model::createComment($_SESSION['email'], $post_id, $text);
         echo "comment created successfully";
         
     }
