@@ -220,14 +220,15 @@ class Auth extends Controller{
 
         
 
-        # TODO update the query to be more optimized
-        phone_model::delete_all($_SESSION['email']);
-        foreach ($data['phones'] as $phone_num ) {
-            $phone = new phone_model();
-            $phone->phone_num = $phone_num;
-            $phone->email = $_SESSION['email'];
-            $phone->save();
-        }
+        
+        phone_model::delete_all($_SESSION['email'],$data['phones']);
+        phone_model::save_many($_SESSION['email'],$data['phones']);
+        // foreach ($data['phones'] as $phone_num ) {
+        //     $phone = new phone_model();
+        //     $phone->phone_num = $phone_num;
+        //     $phone->email = $_SESSION['email'];
+        //     $phone->save();
+        // }
         send_alert("profile updated successfully");
         redirect("auth/profile");
     

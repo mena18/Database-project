@@ -104,25 +104,7 @@ class DataBase{
 	}
 
 
-	public static function save_many($entry){
-		$data = "(".implode(",",static::$fill).")";
-		$arr_1 = [];
-		foreach ($entry as $object) {
-			
-			$arr_2 = [];
-			foreach (static::$fill as $value) {
-				$arr_2[] = "'".$entry."'";
-			}
-			$values =  "(".implode(",",$arr_2).")";
-			$arr_1[] = $values;
-		}
-
-		$values =  "(".implode(",",$arr_1).")";
-		$tb_name = static::$table_name;
-		$sql = "INSERT INTO $tb_name" . $data . " VALUES " . $values ;
-
-		self::query($sql);
-	}
+	
 
 	public function update(){
 		$arr = [];
