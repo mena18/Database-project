@@ -6,6 +6,7 @@
 
 
 </div>
+<?php require_once(app_path('views/components/alert.php')); ?>
 <script src="<?php echo public_path('js/Main.js'); ?>"></script>
 </body>
 </html>

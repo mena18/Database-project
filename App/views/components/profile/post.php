@@ -9,7 +9,7 @@
                 <img src="<?php echo public_path($post->user_picture)?>" alt="">
             <?php } ?>
         </div>
-        <div class="user-name col-md-4">
+        <div class="user-name col-md-4 text-left">
             <a href="<?=url('auth/profile/').$post->writer?>">
                 <span><?= $post->user_first_name." ".$post->user_last_name ?></span>
             </a>

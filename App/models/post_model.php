@@ -81,7 +81,7 @@ class post_model extends DataBase {
             # his shared posts
             # his private posts if both of you are friends 
 
-          $query = "
+            $query = "
                 SELECT
                     post.post_id, post.writer, post.caption, post.is_public, post.image, post.date AS date,
                     User.first_name AS user_first_name,
@@ -109,12 +109,45 @@ class post_model extends DataBase {
                     JOIN User ON post.writer = User.email
                     LEFT outer join comment on comment.post_id = post.post_id 
                     LEFT outer join react on react.post_id = post.post_id 
+                    WHERE
+                        (
+                            post.is_public = 1
+                            OR 
+                            (
+                                post.is_public = 0
+                                AND 
+                                (
+                                    SELECT
+                                        COUNT(*)
+                                        FROM friend
+                                        WHERE
+                                            (friend.user_1 = '$email' AND friend.user_2 = post.writer)
+                                            OR
+                                            (friend.user_2 = '$email' AND friend.user_1 = post.writer)
+                                        HAVING COUNT(*) > 0
+                                )
+                            )
+                        )
+                        AND
+                        post.writer NOT IN
+                        (
+                            SELECT
+                                block.blocked AS b
+                                FROM block
+                                WHERE
+                                    (block.blocker = '$email' AND block.blocked = post.writer)
+                            UNION
+                            SELECT
+                            	block.blocker AS b
+                            	FROM block
+                            	WHERE
+                                    (block.blocked = '$email' AND block.blocker = post.writer)
+                        )
                     GROUP BY (date)
-
-                    ORDER BY date DESC
+                ORDER BY date DESC
             ";
         
-            else {
+        else {
             $myEmail = $_SESSION['email'];
             $query = "
                 SELECT
@@ -128,42 +161,89 @@ class post_model extends DataBase {
                     post JOIN User ON post.writer = User.email
                     LEFT outer join comment on comment.post_id = post.post_id 
                     LEFT outer join react on react.post_id = post.post_id 
-                    WHERE post.writer = '$email' AND post.is_public = '1'
+                    WHERE
+                        post.writer = '$email'
+                        AND
+                        post.is_public = '1'
                     GROUP BY (date)
-                    UNION
-                    SELECT
-                        post.post_id, post.writer, post.caption, post.is_public, post.image, z.date AS date,
-                        User.first_name AS user_first_name,
-                        User.last_name AS user_last_name,
-                        User.picture AS user_picture,
-                        Count(comment.comment_id) AS n_comments,
-                        Count(react.email) AS n_reacts
-                        FROM
-                        (SELECT * FROM share WHERE share.email = '$email') AS z
-                        LEFT JOIN post ON z.post_id = post.post_id
-                        JOIN User ON post.writer = User.email
-                        LEFT outer join comment on comment.post_id = post.post_id 
-                        LEFT outer join react on react.post_id = post.post_id 
-                        GROUP BY (date)
-                      UNION
-                        SELECT
-                            post.post_id, post.writer, post.caption, post.is_public, post.image, post.date AS date,
-                            User.first_name AS user_first_name,
-                            User.last_name AS user_last_name,
-                            User.picture AS user_picture,
-                            Count(comment.comment_id) AS n_comments,
-                            Count(react.email) AS n_reacts
-                            FROM
-                            post JOIN User ON post.writer = User.email
-                            LEFT outer join comment on comment.post_id = post.post_id 
-                            LEFT outer join react on react.post_id = post.post_id 
-                            WHERE post.writer = '$email'
-                            AND (SELECT COUNT(*) FROM friend WHERE (friend.user_1 = '$myEmail' AND friend.user_2 = '$email') OR (friend.user_2 = '$myEmail' AND friend.user_1 = '$email') HAVING COUNT(*) > 0)
-                            GROUP BY (date)
-
-                  ORDER BY date DESC
+                UNION
+                SELECT
+                    post.post_id, post.writer, post.caption, post.is_public, post.image, z.date AS date,
+                    User.first_name AS user_first_name,
+                    User.last_name AS user_last_name,
+                    User.picture AS user_picture,
+                    Count(comment.comment_id) AS n_comments,
+                    Count(react.email) AS n_reacts
+                    FROM
+                    (SELECT * FROM share WHERE share.email = '$email') AS z
+                    LEFT JOIN post ON z.post_id = post.post_id
+                    JOIN User ON post.writer = User.email
+                    LEFT outer join comment on comment.post_id = post.post_id 
+                    LEFT outer join react on react.post_id = post.post_id
+                    WHERE
+                        (
+                            post.is_public = 1
+                            OR 
+                            (
+                                post.is_public = 0
+                                AND 
+                                (
+                                    SELECT
+                                        COUNT(*)
+                                        FROM friend
+                                        WHERE
+                                            (friend.user_1 = '$myEmail' AND friend.user_2 = post.writer)
+                                            OR
+                                            (friend.user_2 = '$myEmail' AND friend.user_1 = post.writer)
+                                        HAVING COUNT(*) > 0
+                                )
+                            )
+                        )
+                        AND
+                        post.writer NOT IN
+                        (
+                            SELECT
+                                block.blocked AS b
+                                FROM block
+                                WHERE
+                                    (block.blocker = '$myEmail' AND block.blocked = post.writer)
+                            UNION
+                            SELECT
+                            	block.blocker AS b
+                            	FROM block
+                            	WHERE
+                                    (block.blocked = '$myEmail' AND block.blocker = post.writer)
+                        )
+                    GROUP BY (date)
+                UNION
+                SELECT
+                    post.post_id, post.writer, post.caption, post.is_public, post.image, post.date AS date,
+                    User.first_name AS user_first_name,
+                    User.last_name AS user_last_name,
+                    User.picture AS user_picture,
+                    Count(comment.comment_id) AS n_comments,
+                    Count(react.email) AS n_reacts
+                    FROM
+                    post JOIN User ON post.writer = User.email
+                    LEFT outer join comment on comment.post_id = post.post_id 
+                    LEFT outer join react on react.post_id = post.post_id 
+                    WHERE
+                        post.writer = '$email'
+                        AND
+                        (
+                            SELECT
+                                COUNT(*)
+                                FROM friend
+                                WHERE
+                                    (friend.user_1 = '$myEmail' AND friend.user_2 = '$email')
+                                    OR
+                                    (friend.user_2 = '$myEmail' AND friend.user_1 = '$email')
+                                HAVING COUNT(*) > 0
+                        )
+                    GROUP BY (date)
+                ORDER BY date DESC
             ";
-        }
+    }
 
         return self::query_fetch_all($query, 'post_model');
     }

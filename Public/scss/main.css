@@ -297,7 +297,7 @@
       border-radius: 50%;
       max-height: 45px; }
     .post-form .user-info .user-name, .post-form .post-write-comment .user-name {
-      margin-left: -65px;
+      margin-left: -35px;
       font-weight: bold; }
       .post-form .user-info .user-name a, .post-form .post-write-comment .user-name a {
         color: inherit;
@@ -306,7 +306,7 @@
           text-decoration: none;
           color: #94999A; }
     .post-form .user-info .date, .post-form .post-write-comment .date {
-      margin-left: 90px; }
+      margin-left: 60px; }
     .post-form .user-info .edit-btn-container, .post-form .post-write-comment .edit-btn-container {
       margin-left: -20px; }
       .post-form .user-info .edit-btn-container .edit-btn, .post-form .post-write-comment .edit-btn-container .edit-btn {
@@ -433,7 +433,7 @@
       resize: none;
       padding-left: 21px;
       max-height: 150px; }
-    .edit-form form .form-row label {
+    .edit-form form .form-row label, .edit-form form .form-row span {
       padding-left: 10px;
       margin-bottom: 0;
       color: #D3DADA; }

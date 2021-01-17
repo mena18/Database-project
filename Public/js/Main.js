@@ -8,35 +8,41 @@ function hide_signup_popup() {
     $('#signup-form').hide();
 }
 
-(function init_signup_selectors() {
+function init_date_selectors(day = null, month = null, year = null) {
     let date = new Date();
     let node = null
     let textNode = null
     let months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    console.log(date.getFullYear())
-    console.log(date.getMonth())
+    if (day === null && month === null && year === null) {
+        day = date.getDate();
+        month = date.getMonth();
+        year = date.getFullYear();
+    }
     for (let i=1; i <= 31; i++) {
         node = document.createElement("option");
         textNode = document.createTextNode(i.toString());
         node.appendChild(textNode);
-        node.selected = (i === date.getDate())
+        node.selected = (i === day)
         $('#days').append(node);
     }
     for (let i = 0; i < months.length; i++) {
         node = document.createElement("option");
         textNode = document.createTextNode(months[i]);
         node.appendChild(textNode);
-        node.selected = (i === date.getMonth())
+        node.selected = (i === month)
         $('#months').append(node);
     }
     for (let i = date.getFullYear(); i >= 1969; i--) {
         node = document.createElement("option");
         textNode = document.createTextNode(i.toString())
         node.appendChild(textNode);
-        node.selected = (i === date.getFullYear());
+        node.selected = (i === year);
         $('#years').append(node)
     }
-})();
+}
+
+if (window.location.href === "http://localhost/social/auth/login")
+    init_date_selectors();
 
 //-- My Profile page --//
 let navBtnId = ['my-posts-btn', 'my-friends-btn', 'my-friend-requests', 'edit-my-profile-btn', 'blocked-users-btn'];

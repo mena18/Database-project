@@ -23,6 +23,28 @@
                 </select>
             </div>
         </div>
+        <div class="form-row" onclick="init_date_selectors(12, 2, 2005)">
+            <div class="col-md-12">
+                <span>Date of birth</span>
+            </div>
+            <div class="form-group col-md-4">
+                <select name="day" id="days" class="form-control"></select>
+            </div>
+            <div class="form-group col-md-4">
+                <select name="month" id="months" class="form-control"></select>
+            </div>
+            <div class="form-group col-md-4">
+                <select name="year" id="years" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <input name="old_password" type="password" class="form-control" placeholder="Old Password">
+            </div>
+            <div class="col">
+                <input name="new_password" type="password" class="form-control" placeholder="New Password">
+            </div>
+        </div>
         <div class="form-row">
             <div class="col">
                 <label for="">About me</label>
@@ -63,3 +85,6 @@
         <button class="btn">Save</button>
     </form>
 </div>
+
+<script>
+</script>
