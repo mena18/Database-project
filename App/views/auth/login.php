@@ -24,7 +24,7 @@
                             <button id='sub_form' type="submit" class="btn btn-primary">Log In</button>
                         </form>
                         <div class="forgotten-password-link">
-                            <a href="">Forgotten Password?</a>
+                            <!-- <a href="">Forgotten Password?</a> -->
                             <hr>
                         </div>
                         <div class="new-account-btn">

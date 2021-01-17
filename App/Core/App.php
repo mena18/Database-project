@@ -23,6 +23,12 @@ class App{
       if(method_exists($this->controller,$url[1])){
         $this->method = $url[1];
         unset($url[1]);
+      }else{
+        // $this->controller = "home";
+        // require_once(app_path('Controllers/home.php'));
+        // $this->controller = new $this->controller;
+        // $this->method = "index";
+        redirect("home/index");
       }
     }
     $this->params = $url ? array_values($url) : [];
