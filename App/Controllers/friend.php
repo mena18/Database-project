@@ -12,9 +12,9 @@ class Friend extends Controller{
         $s = friend_model::can_request($sender,$receiver);
         if (!$s){
             friend_model::send_request($sender,$receiver);
-            echo "friend request is sent successfully";
+            send_alert("friend request is sent successfully");
         }else{
-            echo "you already sent the friend request";
+            send_alert("you already sent the friend request");
         }
 
         redirect('auth/profile');
@@ -58,7 +58,7 @@ class Friend extends Controller{
         friend_model::remove_friendship($sender,$receiver);
         friend_model::block($sender,$receiver);
 
-        echo "you successfully blocked '$sender' ";
+        send_alert("you successfully blocked '$sender' ");
         
         redirect('auth/profile');
         
@@ -72,7 +72,7 @@ class Friend extends Controller{
 
         friend_model::unblock($sender,$receiver);
 
-        echo "you successfully unblocked '$sender' ";
+        send_alert("you successfully unblocked '$sender' ");
         
         redirect('auth/profile');
         

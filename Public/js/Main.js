@@ -41,8 +41,11 @@ function init_date_selectors(day = null, month = null, year = null) {
     }
 }
 
-// if (window.location.href === "http://localhost/social/auth/login")
-//     init_date_selectors();
+
+
+    
+    
+
 
 //-- My Profile page --//
 let navBtnId = ['my-posts-btn', 'my-friends-btn', 'my-friend-requests', 'edit-my-profile-btn', 'blocked-users-btn'];

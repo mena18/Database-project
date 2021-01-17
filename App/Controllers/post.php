@@ -51,6 +51,7 @@ class Post extends Controller{
         }
 
         post_model::edit($post_id, $data);
+        // send_alert("post updated successfully");
         redirect("auth/profile");
     }
 

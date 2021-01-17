@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="<?php echo public_path('scss/main.css'); ?>">
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
 </head>
 
 <body>

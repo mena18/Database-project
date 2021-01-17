@@ -6,7 +6,7 @@ class Auth extends Controller{
     public function sign_up(){
 
 
-        print_r($_POST);
+        //print_r($_POST);
 
     
         if(isset($_SESSION['email']) ){
@@ -27,8 +27,8 @@ class Auth extends Controller{
         ));
 
         if(is_string($data) ){
-            echo $data;
-            return $this->view("auth/login");
+            send_alert($data);
+            redirect("auth/login");
         }
 
 
@@ -36,6 +36,12 @@ class Auth extends Controller{
         $date->setDate($_POST['year'], date('m', strtotime($_POST['month'])), $_POST['day']);
         $final_date = $date->format('Y-m-d');
         
+        $other_user = user_model::where(["email"=>$data['email']]);
+        if(count($other_user)>0){
+            send_alert("this email is unavaiable");
+            redirect("auth/login");
+        }
+
         $user = new user_model();
         $user->email = $data['email'];
         $user->first_name = $data['first_name'];
@@ -80,12 +86,12 @@ class Auth extends Controller{
 
             $user = user_model::where(["email"=>$_POST['email']]);
             if(!$user){
-                echo "user not found"; // change it to varialbe named error and display the error
+                send_alert("user not found"); // change it to varialbe named error and display the error
                 return $this->view("auth/login",['old'=>$data]);
             }
             $vert =  password_verify($_POST['password'],$user[0]->password);
             if(!$vert){
-                echo "wrong password"; // change it to varialbe named error and display the error
+                send_alert("wrong password"); // change it to varialbe named error and display the error
                 return $this->view("auth/login",['old'=>$data]);
                 
             }else{
@@ -113,6 +119,7 @@ class Auth extends Controller{
             $user = user_model::where(["email"=>$user_email])[0];
             $is_blocked = friend_model::check_blocking($user_email,$_SESSION['email']);
             if($is_blocked){
+                send_alert("can't view user profile");
                 return redirect("auth/profile");
             }
             $posts =  post_model::get_my_posts($user_email);
@@ -180,9 +187,8 @@ class Auth extends Controller{
 
         # not valid input entered
         if(is_string($data) ){
+            send_alert($data);
             redirect("auth/profile");
-            // echo $old;
-            //return $this->view("auth/sign_up");
         
         }
 
@@ -204,8 +210,9 @@ class Auth extends Controller{
         if($data['old_password'] && $data['new_password'] ){
             if(password_verify($data['old_password'],$user->password)){
                 $user->password = password_hash($data['new_password'], PASSWORD_DEFAULT);
+                send_alert("password changed successfuly");
             }else{
-                echo "wrong password";
+                send_alert("wrong password");
             }
         }
 
@@ -221,7 +228,7 @@ class Auth extends Controller{
             $phone->email = $_SESSION['email'];
             $phone->save();
         }
-
+        send_alert("profile updated successfully");
         redirect("auth/profile");
     
         

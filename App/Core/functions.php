@@ -19,6 +19,13 @@ function require_login(){
 	}
 }
 
+function send_alert($message){
+	if(!isset($_SESSION['alerts'])){
+		$_SESSION['alerts'] = [];
+	}
+	array_push($_SESSION['alerts'], $message);
+}
+
 function validate($_data,$arr){
 	$output = [];
 	foreach ($arr as $key => $value) {

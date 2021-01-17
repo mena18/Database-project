@@ -94,6 +94,9 @@
         </div>
     </div>
     <script>
+        window.onload = () => {
+            init_date_selectors();
+        }
         $('body').css('background-color', '#F0F2F5');
     </script>
 
