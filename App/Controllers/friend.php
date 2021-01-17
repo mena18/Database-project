@@ -38,10 +38,11 @@ class Friend extends Controller{
 
         if($response == "accept"){
             friend_model::create_friendship($sender,$receiver);
-            echo "you and '$sender' are now friends ";
-        }else{
-            echo "you rejected the friend request from '$sender' ";
+            //echo "you and '$sender' are now friends ";
         }
+        // else{
+        //     echo "you rejected the friend request from '$sender' ";
+        // }
 
         redirect('auth/profile');
         
@@ -58,7 +59,7 @@ class Friend extends Controller{
         friend_model::remove_friendship($sender,$receiver);
         friend_model::block($sender,$receiver);
 
-        send_alert("you successfully blocked '$sender' ");
+        send_alert("you successfully blocked '$receiver' ");
         
         redirect('auth/profile');
         
@@ -72,7 +73,7 @@ class Friend extends Controller{
 
         friend_model::unblock($sender,$receiver);
 
-        send_alert("you successfully unblocked '$sender' ");
+        send_alert("you successfully unblocked '$receiver' ");
         
         redirect('auth/profile');
         
@@ -91,7 +92,7 @@ class Friend extends Controller{
 
         friend_model::remove_friendship($sender,$receiver);
 
-        echo "your friendship with '$sender' is deleted ";
+        //echo "your friendship with '$sender' is deleted ";
         
         redirect('auth/profile');
     }
