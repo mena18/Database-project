@@ -23,7 +23,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-row" onclick="init_date_selectors(12, 2, 2005)">
+        <div class="form-row">
             <div class="col-md-12">
                 <span>Date of birth</span>
             </div>
@@ -55,7 +55,7 @@
         </div>
         <div class="form-row">
             <div class="col">
-                <input name="hone_town" type="text" class="form-control" placeholder="Address" value="<?=$user->home_town?>">
+                <input name="home_town" type="text" class="form-control" placeholder="Address" value="<?=$user->home_town?>">
             </div>
         </div>
         <div class="phone-numbers-list">
@@ -86,5 +86,17 @@
     </form>
 </div>
 
+<?php 
+
+$birth_day = $pieces = explode("-", $user->birth_date);
+$year = $birth_day[0];
+$month = $birth_day[1]-1;
+$day = $birth_day[2];
+
+?>
+
 <script>
+window.onload = () => {
+    init_date_selectors(<?php echo "$day, $month, $year" ?> );
+}
 </script>

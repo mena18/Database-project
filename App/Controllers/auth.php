@@ -23,6 +23,7 @@ class Auth extends Controller{
             "day"=>"required",
             "month"=>"required",
             "year"=>"required",
+            
         ));
 
         if(is_string($data) ){
@@ -49,7 +50,7 @@ class Auth extends Controller{
         }
         $user->save();
 
-        # TODO create session to make the user logged in
+        
         $_SESSION['email'] = $user->email;
         redirect("auth/profile");
         
@@ -158,18 +159,22 @@ class Auth extends Controller{
     public function edit_profile(){
         require_login();
         
-        print_r($_POST);
+        //print_r($_POST);
         
         $data = validate($_POST,array(
             "first_name"=>"required",
             "last_name"=>"required",
             "gender"=>"required",
-            "birth_date"=>"",
+            "day"=>"required",
+            "month"=>"required",
+            "year"=>"required",
             "nick_name"=>"",
             "home_town"=>"",
             "status"=>"",
             "about_me"=>"",
             "phones"=>"",
+            "old_password"=>"",
+            "new_password"=>""
             
         ));
 
@@ -180,20 +185,30 @@ class Auth extends Controller{
             //return $this->view("auth/sign_up");
         
         }
+
+        $date = new DateTime();
+        $date->setDate($_POST['year'], date('m', strtotime($_POST['month'])), $_POST['day']);
+        $final_date = $date->format('Y-m-d');
+
         
         $user = user_model::where(["email"=>$_SESSION['email']])[0];
         $user->first_name = $data['first_name'];
         $user->last_name = $data['last_name'];
         $user->nick_name = $data['nick_name'];
         $user->gender = $data['gender'];
-        //$user->birth_date = $old['birth_date'];
-        // $new_pic = upload_file('picture');
-        // if($new_pic){
-        //     $user->picture = $new_pic; // i didn't created the path yet
-        // }
+        $user->birth_date = $final_date;
         $user->home_town = $data['home_town'];
-        //$user->status = $old['status'];
+        $user->status = $data['status'];
         $user->about_me = $data['about_me'];
+
+        if($data['old_password'] && $data['new_password'] ){
+            if(password_verify($data['old_password'],$user->password)){
+                $user->password = password_hash($data['new_password'], PASSWORD_DEFAULT);
+            }else{
+                echo "wrong password";
+            }
+        }
+
         $user->update();
 
         
@@ -223,7 +238,11 @@ class Auth extends Controller{
 
         $post = new post_model();
         $post->writer = $user->email;
-        $post->caption = $user->first_name." ".$user->last_name . " " . "updated his profile picture";
+        $message = "his";
+        if($user->gender=="female"){
+            $message = "her";
+        }
+        $post->caption = $user->first_name." ".$user->last_name . " " . "updated $message profile picture";
         $post->is_public = 0;
         $post->image = $user->picture;
         $post->save();
