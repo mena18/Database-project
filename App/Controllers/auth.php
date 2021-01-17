@@ -42,6 +42,11 @@ class Auth extends Controller{
         $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
         $user->gender = $data['gender'];
         $user->birth_date = $final_date;
+        if($user->gender == "male"){
+            $user->picture = "images/male-profile-image.png";
+        }else{
+            $user->picture = "images/female-profile-image.png";
+        }
         $user->save();
 
         # TODO create session to make the user logged in
@@ -52,6 +57,10 @@ class Auth extends Controller{
     }
 
     public function login(){ 
+        if(isset($_SESSION['email']) ){
+            redirect("auth/profile");
+        }
+        
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             return $this->view("auth/login");
         }else{
